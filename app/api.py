@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import os
 from datetime import date
 from pathlib import Path
 from typing import Optional
@@ -28,17 +27,9 @@ from ingestion.metadata_store import ChunkMetadataStore
 app = FastAPI(title="Mutual Fund FAQ Assistant", version="0.1.0")
 _service: Optional["AssistantService"] = None
 _ui_path = Path(__file__).resolve().parent.parent / "ui"
-_frontend_origins = [
-    origin.strip()
-    for origin in os.getenv(
-        "FRONTEND_ORIGINS",
-        "http://localhost:8000,http://127.0.0.1:8000",
-    ).split(",")
-    if origin.strip()
-]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_frontend_origins,
+    allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type"],

@@ -36,7 +36,7 @@ Add FastAPI CORS middleware in `app/api.py` and allow only the deployed Vercel o
 Read the value from a backend environment variable such as:
 
 ```dotenv
-FRONTEND_ORIGINS=https://<vercel-project>.vercel.app
+FRONTEND_ORIGINS=*
 ```
 
 Do not use `*` when credentials or future authenticated endpoints may be introduced.
@@ -99,7 +99,7 @@ SQLITE_PATH=./data/processed/app.db
 ALLOWED_DOMAINS=groww.in
 ALLOWED_SOURCE_URLS=<exact-seven-approved-groww-urls>
 DEFAULT_REFUSAL_LINK=https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth
-FRONTEND_ORIGINS=https://<vercel-project>.vercel.app
+FRONTEND_ORIGINS=*
 ```
 
 Use the exact seven-URL value from `.env.example`; do not add aggregator or third-party URLs.
@@ -162,10 +162,9 @@ For the framework-free static deployment, set `PUBLIC_API_BASE_URL` in Vercel an
 ### 4.3 Vercel domains
 
 1. Deploy a preview first.
-2. Confirm the preview origin is present in Railway `FRONTEND_ORIGINS`.
+2. Confirm the API returns CORS headers for the current Vercel preview origin.
 3. Add the production custom domain, if applicable.
-4. Add the production domain to Railway CORS settings.
-5. Redeploy Railway after changing allowed origins.
+4. No Railway CORS update is required when Vercel generates a new deployment URL.
 
 ## 5. Cross-Service Verification
 
@@ -200,7 +199,7 @@ From the Vercel URL:
 
 ### CORS check
 
-Use the Vercel origin in an OPTIONS request and confirm the response includes the expected `access-control-allow-origin` value. Confirm an unknown origin is not allowed.
+Use the Vercel origin in an OPTIONS request and confirm the response includes `access-control-allow-origin: *`.
 
 ### Data integrity checks
 

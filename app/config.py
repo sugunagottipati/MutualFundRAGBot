@@ -84,10 +84,6 @@ class Settings:
         if self.default_refusal_link not in approved_set:
             raise ConfigError("DEFAULT_REFUSAL_LINK must be one of the approved allowlisted URLs.")
 
-        if any(origin == "*" for origin in self.frontend_origins):
-            raise ConfigError("FRONTEND_ORIGINS cannot contain '*'.")
-
-
 @lru_cache(maxsize=1)
 def get_settings(validate: bool = True) -> Settings:
     settings = Settings.from_env()
