@@ -2,8 +2,33 @@ from datetime import datetime, timezone
 import json
 
 from ingestion.fetch import FetchResult
+from ingestion.extract import extract_document
 from ingestion.pipeline import run_ingestion
 from ingestion.seed_urls import get_active_source_inventory
+
+
+def test_extracts_key_facts_from_embedded_fund_data() -> None:
+    html = (
+        b'<html><script>window.__DATA__={'
+        b'"expense_ratio":"0.75",'
+        b'"exit_load":"Exit load of 1% if redeemed within 1 year",'
+        b'"min_sip_investment":100,'
+        b'"risk":"Very High",'
+        b'"benchmark":"BSE 250 SmallCap TRI"'
+        b'}</script></html>'
+    )
+
+    extracted = extract_document(
+        html,
+        content_type="text/html",
+        source_url="https://groww.in/mutual-funds/example",
+    )
+
+    assert "Expense ratio: 0.75%" in extracted.text
+    assert "Exit load: Exit load of 1% if redeemed within 1 year" in extracted.text
+    assert "Minimum SIP amount: Rs 100" in extracted.text
+    assert "Riskometer: Very High" in extracted.text
+    assert "Benchmark: BSE 250 SmallCap TRI" in extracted.text
 
 
 def test_pipeline_deduplicates_and_writes_logs(tmp_path) -> None:

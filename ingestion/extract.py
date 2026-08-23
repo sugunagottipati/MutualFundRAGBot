@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import BytesIO
+import re
 
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
@@ -26,6 +27,7 @@ def extract_document(content: bytes, *, content_type: str, source_url: str) -> E
 
 def _extract_html(content: bytes) -> ExtractedDocument:
     soup = BeautifulSoup(content, "lxml")
+    structured_facts = _extract_structured_facts(content)
 
     for tag in soup(["script", "style", "noscript", "svg", "img"]):
         tag.decompose()
@@ -44,6 +46,11 @@ def _extract_html(content: bytes) -> ExtractedDocument:
             _append_unique(lines, heading)
         else:
             _append_unique(lines, text)
+
+    if structured_facts:
+        _append_unique(lines, "## Fund details")
+        for fact in structured_facts:
+            _append_unique(lines, fact)
 
     return ExtractedDocument(
         text="\n".join(lines),
@@ -73,3 +80,24 @@ def _extract_pdf(content: bytes) -> ExtractedDocument:
 def _append_unique(lines: list[str], value: str) -> None:
     if not lines or lines[-1] != value:
         lines.append(value)
+
+
+def _extract_structured_facts(content: bytes) -> tuple[str, ...]:
+    """Recover key fund facts embedded in page data before scripts are removed."""
+    source = content.decode("utf-8", errors="ignore")
+    facts: list[str] = []
+    structured_fields = (
+        ("expense_ratio", r"Expense ratio: {value}%", r"[\"']?([0-9]+(?:\.[0-9]+)?)[\"']?"),
+        ("exit_load", r"Exit load: {value}", r"[\"']([^\"']+)[\"']"),
+        ("min_sip_investment", r"Minimum SIP amount: Rs {value}", r"([0-9]+(?:\.[0-9]+)?)"),
+        ("risk", r"Riskometer: {value}", r"[\"']([^\"']+)[\"']"),
+        ("benchmark", r"Benchmark: {value}", r"[\"']([^\"']+)[\"']"),
+    )
+    for field, label, value_pattern in structured_fields:
+        match = re.search(
+            rf"[\"']{field}[\"']\s*:\s*{value_pattern}",
+            source,
+        )
+        if match:
+            facts.append(label.format(value=match.group(1)))
+    return tuple(facts)
