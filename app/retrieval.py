@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from typing import Optional
 
 import numpy as np
@@ -12,6 +13,25 @@ from ingestion.embeddings import EmbeddingsClient
 from ingestion.index import ChromaIndexBuilder
 from ingestion.metadata_store import ChunkMetadataStore
 from ingestion.chunking import Chunk
+
+
+_FUND_QUERY_ALIASES: tuple[tuple[str, str], ...] = (
+    ("hdfc gold etf fund of fund", "hdfc-gold-etf-fund-of-fund-direct-plan-growth"),
+    ("hdfc retirement savings fund", "hdfc-retirement-savings-fund-equity-plan-direct-growth"),
+    ("hdfc large and mid cap fund", "hdfc-large-and-mid-cap-fund-direct-growth"),
+    ("hdfc small cap fund", "hdfc-small-cap-fund-direct-growth"),
+    ("hdfc mid cap fund", "hdfc-mid-cap-fund-direct-growth"),
+    ("hdfc large cap fund", "hdfc-large-cap-fund-direct-growth"),
+    ("hdfc equity fund", "hdfc-equity-fund-direct-growth"),
+)
+
+
+def _source_url_from_query(query: str) -> Optional[str]:
+    normalized = re.sub(r"[^a-z0-9]+", " ", query.lower()).strip()
+    for alias, slug in _FUND_QUERY_ALIASES:
+        if alias in normalized:
+            return f"https://groww.in/mutual-funds/{slug}"
+    return None
 
 
 @dataclass
@@ -65,13 +85,17 @@ class Retriever:
             List of RetrievalResult objects, ranked by relevance
         """
         if allowed_source_urls is None:
-            allowed_source_urls = APPROVED_SOURCE_URLS
+            inferred_source = _source_url_from_query(query)
+            allowed_source_urls = (
+                (inferred_source,) if inferred_source else APPROVED_SOURCE_URLS
+            )
 
         # Embed query
         query_embedding = self.embeddings.embed(query)
 
         # Search the configured vector database
-        chunk_ids, distances = self.index.search(query_embedding, k=top_k)
+        search_k = max(top_k, 50) if len(allowed_source_urls) == 1 else top_k
+        chunk_ids, distances = self.index.search(query_embedding, k=search_k)
 
         results = []
         for rank, (chunk_id, distance) in enumerate(zip(chunk_ids, distances)):
@@ -94,7 +118,7 @@ class Retriever:
             )
             results.append(result)
 
-        return results
+        return results[:top_k]
 
     def retrieve_by_section(
         self,

@@ -11,6 +11,16 @@ from ingestion.chunking import ChunkingSplitter, SectionAwareChunker, TokenCount
 from ingestion.embeddings import LocalEmbeddings, get_embeddings_client
 from ingestion.index import ChromaIndexBuilder
 from ingestion.metadata_store import ChunkMetadataStore
+from app.retrieval import _source_url_from_query
+
+
+def test_source_url_is_inferred_from_named_fund_query() -> None:
+    assert _source_url_from_query(
+        "What is the expense ratio of HDFC Mid Cap Fund?"
+    ) == "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"
+    assert _source_url_from_query(
+        "What is the benchmark for HDFC Large and Mid Cap Fund?"
+    ) == "https://groww.in/mutual-funds/hdfc-large-and-mid-cap-fund-direct-growth"
 
 
 class TestTokenCounter:
