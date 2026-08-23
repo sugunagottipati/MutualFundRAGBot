@@ -348,6 +348,10 @@ class EnhancedContextAssembler(ContextAssembler):
         # Assemble using single-source policy
         context, source_url = self.assemble_single_source_context(high_quality)
 
+        # Keep the most relevant leading chunks within the validation budget.
+        if len(context) > 5000:
+            context = context[:5000].rsplit("\n", 1)[0]
+
         # Validate assembled context
         is_valid, reason = self.validator.validate_context_relevance(context)
         if not is_valid:

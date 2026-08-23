@@ -142,7 +142,9 @@ class AssistantService:
             if result.chunk.metadata.source_url == source_url
             and result.chunk.metadata.crawled_at
         ]
-        return max(dates) if dates else date.today().isoformat()
+        if not dates:
+            return date.today().isoformat()
+        return max(dates).split("T", 1)[0]
 
 
 def build_service(settings: Settings) -> AssistantService:

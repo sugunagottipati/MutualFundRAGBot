@@ -52,8 +52,7 @@ class FAISSIndexBuilder:
         embeddings: list[np.ndarray],
         chunk_ids: list[str],
     ) -> None:
-        """
-        Add embeddings to index.
+        """Add embeddings to index.
 
         Args:
             embeddings: List of embedding vectors
@@ -214,16 +213,23 @@ class ChromaIndexBuilder:
             payload["metadatas"] = metadatas
         self.collection.upsert(**payload)
 
-    def search(self, query_embedding: np.ndarray, k: int = 5) -> tuple[list[str], list[float]]:
-        """Search the collection and return chunk IDs with L2 distances."""
+    def search(
+        self,
+        query_embedding: np.ndarray,
+        k: int = 5,
+        source_url: Optional[str] = None,
+    ) -> tuple[list[str], list[float]]:
+        """Search the collection, optionally restricted to one source URL."""
         total = self.collection.count()
         if total == 0:
             return [], []
 
+        where = {"source_url": source_url} if source_url else None
         result = self.collection.query(
             query_embeddings=[query_embedding.astype(np.float32).tolist()],
             n_results=min(k, total),
             include=["distances"],
+            **({"where": where} if where else {}),
         )
         return (
             result["ids"][0],

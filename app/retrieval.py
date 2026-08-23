@@ -94,8 +94,12 @@ class Retriever:
         query_embedding = self.embeddings.embed(query)
 
         # Search the configured vector database
-        search_k = max(top_k, 50) if len(allowed_source_urls) == 1 else top_k
-        chunk_ids, distances = self.index.search(query_embedding, k=search_k)
+        source_filter = allowed_source_urls[0] if len(allowed_source_urls) == 1 else None
+        chunk_ids, distances = self.index.search(
+            query_embedding,
+            k=top_k,
+            source_url=source_filter,
+        )
 
         results = []
         for rank, (chunk_id, distance) in enumerate(zip(chunk_ids, distances)):
@@ -127,7 +131,6 @@ class Retriever:
     ) -> list[Chunk]:
         """
         Retrieve all chunks from a specific section (non-semantic).
-
         Useful for fetching structured data like holdings, expense ratios, etc.
 
         Args:

@@ -223,6 +223,13 @@ class TestChromaIndex:
             # First result should be the query itself (distance ~0)
             assert results_ids[0] == "chunk_1"
 
+            filtered_ids, _ = index.search(
+                embeddings[0],
+                k=2,
+                source_url="https://groww.in/mutual-funds/example",
+            )
+            assert filtered_ids == []
+
     def test_chroma_get_stats(self):
         """Test getting collection stats."""
         with tempfile.TemporaryDirectory() as tmpdir:

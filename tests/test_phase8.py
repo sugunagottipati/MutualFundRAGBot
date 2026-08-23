@@ -75,6 +75,24 @@ def test_factual_ask_returns_structured_contract():
     assert response.answer.startswith("The expense ratio")
 
 
+def test_factual_ask_normalizes_timestamp_footer():
+    assistant = service()
+    assistant.retriever.retrieve = lambda query, top_k: [
+        SimpleNamespace(
+            chunk=SimpleNamespace(
+                metadata=SimpleNamespace(
+                    source_url=APPROVED_SOURCE_URLS[0],
+                    crawled_at="2026-08-23T12:58:51+00:00",
+                )
+            )
+        )
+    ]
+
+    response = assistant.ask("What is the expense ratio?")
+
+    assert response.last_updated_from_sources == "2026-08-23"
+
+
 def test_advisory_ask_does_not_retrieve():
     assistant = service(FakeRouter(should_refuse=True))
 
