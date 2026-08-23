@@ -1,0 +1,5 @@
+{
+  "framework": null,
+  "buildCommand": "cd ui && sh vercel-build.sh",
+  "outputDirectory": "ui"
+}
