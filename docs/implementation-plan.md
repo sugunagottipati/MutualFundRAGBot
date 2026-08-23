@@ -345,14 +345,22 @@ Tasks:
   - single-citation adherence
   - refusal precision
 - Add regression suite for CI
+- Add a GitHub Actions scheduled ingestion workflow that runs the approved Groww
+  source refresh and incremental index update every day at 10:02 AM IST
+  (`32 4 * * *` UTC), with manual dispatch available for operational recovery
+- Make the workflow fail clearly on ingestion or index errors and retain the
+  ingestion status logs as workflow artifacts
 
 Deliverables:
 - Evaluation report with baseline scores
 - Regression test suite for future changes
+- Daily Groww ingestion GitHub Actions workflow
 
 Exit Criteria:
 - Meets success criteria from problem statement
 - No critical compliance violations in benchmark runs
+- The scheduled workflow refreshes only the approved Groww pages and ingests
+  the latest data at 10:02 AM IST each day
 
 ## Phase 11: Documentation and Release Readiness
 Purpose:

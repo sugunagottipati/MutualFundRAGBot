@@ -1,0 +1,42 @@
+name: Daily Groww Ingestion
+
+on:
+  schedule:
+    # GitHub Actions cron uses UTC: 04:32 UTC is 10:02 AM IST (UTC+05:30).
+    - cron: "32 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      EMBEDDING_PROVIDER: local
+      EMBEDDING_MODEL: all-MiniLM-L6-v2
+      VECTOR_DB_PATH: ./data/chroma
+      SQLITE_PATH: ./data/processed/app.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.txt
+      - name: Refresh approved Groww sources and index
+        run: python -m scripts.refresh_sources
+      - name: Validate refreshed corpus
+        run: python -m scripts.validate_project --skip-tests
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: groww-refresh-${{ github.run_id }}
+          path: |
+            data/raw/
+            data/processed/
+            data/chroma/
+          if-no-files-found: warn
+          retention-days: 14

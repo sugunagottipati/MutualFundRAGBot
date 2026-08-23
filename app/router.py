@@ -97,7 +97,7 @@ class IntentRouter:
             r"which.*is.*better",
             r"rank\s",
             r"best.*performing",
-            r"top.*fund",
+            r"top\s+funds?",
             r"outperform",
             r"better.*than",
             r"worse.*than",
