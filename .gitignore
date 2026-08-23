@@ -5,12 +5,8 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 
-# Generated ingestion and vector-store artifacts
-data/chroma/
+# Generated ingestion artifacts
 data/raw/
-data/processed/documents/
-data/processed/*.db
-data/processed/*.sqlite*
 artifacts/
 
 # Local editor and tooling state

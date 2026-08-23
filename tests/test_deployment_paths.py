@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from types import SimpleNamespace
+from pathlib import Path
 
 from ingestion.index_builder import IndexBuilder
 
@@ -26,3 +27,18 @@ def test_index_builder_derives_documents_directory_from_sqlite_path(monkeypatch)
 
     assert builder.processed_dir.as_posix() == "/data/processed"
     assert builder.documents_dir.as_posix() == "/data/processed/documents"
+
+
+def test_daily_workflow_promotes_validated_data_to_git():
+    workflow = (
+        Path(__file__).resolve().parents[1]
+        / ".github"
+        / "workflows"
+        / "daily-ingestion.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "contents: write" in workflow
+    assert "Validate refreshed corpus" in workflow
+    assert "Commit promoted corpus and index" in workflow
+    assert "git add data/processed/documents/ data/processed/app.db data/chroma/" in workflow
+    assert 'git commit -m "chore(ingest): daily corpus refresh' in workflow

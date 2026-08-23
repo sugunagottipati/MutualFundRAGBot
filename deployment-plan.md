@@ -94,8 +94,8 @@ GROQ_API_KEY=<rotated-groq-key>
 GROQ_MODEL=openai/gpt-oss-120b
 EMBEDDING_PROVIDER=local
 EMBEDDING_MODEL=BAAI/bge-small-en-v1.5
-VECTOR_DB_PATH=/data/chroma
-SQLITE_PATH=/data/processed/app.db
+VECTOR_DB_PATH=./data/chroma
+SQLITE_PATH=./data/processed/app.db
 ALLOWED_DOMAINS=groww.in
 ALLOWED_SOURCE_URLS=<exact-seven-approved-groww-urls>
 DEFAULT_REFUSAL_LINK=https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth
@@ -104,34 +104,31 @@ FRONTEND_ORIGINS=https://<vercel-project>.vercel.app
 
 Use the exact seven-URL value from `.env.example`; do not add aggregator or third-party URLs.
 
-### 3.3 Vector and SQLite data strategy
+### 3.3 Git-Backed Corpus Promotion
 
-The repository intentionally excludes generated Chroma, raw HTML, processed document files, and local databases. Choose one of these strategies before the first production deployment:
+The daily GitHub Actions workflow validates and commits the processed documents,
+SQLite metadata database, and Chroma index to `main`. A Railway deployment built
+from `main` therefore receives the same promoted corpus as the workflow.
 
-**Recommended for the first deployment: provision a Railway volume**
+1. Keep `VECTOR_DB_PATH=./data/chroma` and
+    `SQLITE_PATH=./data/processed/app.db` in Railway.
+2. Do not mount a Railway volume over the repository `data` directory.
+3. Let Railway redeploy after a successful `chore(ingest)` commit.
+4. Verify `/sources` and `/ask` after the deployment completes.
 
-1. Attach a persistent Railway volume mounted at `/data`.
-2. Place the Chroma directory at `/data/chroma`.
-3. Place the SQLite metadata database at `/data/processed/app.db`.
-4. Run the ingestion/index build once as a controlled release task.
-5. Verify the collection contains embeddings before starting normal traffic.
-6. Back up or recreate the volume from a documented corpus build when sources are refreshed.
-
-**Alternative: ship a versioned index artifact**
-
-Build the approved corpus and index in CI, publish an immutable artifact, and download it during deployment. Verify its checksum and schema before serving traffic. Do not upload secrets or unreviewed source material as an artifact.
-
-A fresh Railway container without either a persistent volume or a bundled index will start but `/ask` and `/sources` will fail because the vector collection is absent.
+Raw HTML snapshots remain untracked. The promoted data set is small enough for
+Git and is validated before every automated commit.
 
 ### 3.4 Ingestion and refresh operations
 
-Do not fetch the source corpus on every user request. Run ingestion as a scheduled or manually approved job:
+Do not fetch the source corpus on every user request. The daily GitHub Actions
+job runs ingestion and promotes validated data through a commit to `main`:
 
 1. Fetch only the seven approved Groww URLs.
 2. Normalize and chunk the documents.
 3. Rebuild or update Chroma and SQLite.
 4. Run validation and retrieval smoke tests.
-5. Promote the refreshed data only after the index integrity check passes.
+5. Commit the refreshed data only after the index integrity check passes.
 
 Keep the existing source health and ingestion logs outside the browser response. Avoid storing user queries or personal information.
 
