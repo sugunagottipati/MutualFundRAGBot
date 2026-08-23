@@ -210,6 +210,8 @@ def ask(request: AskRequest) -> AskResponse:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except (ConfigError, RuntimeError) as exc:
         raise HTTPException(status_code=503, detail="Assistant dependencies are unavailable") from exc
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail="Assistant request failed") from exc
 
 
 @app.exception_handler(ConfigError)
