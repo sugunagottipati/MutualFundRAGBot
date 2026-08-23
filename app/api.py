@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -27,12 +28,42 @@ from ingestion.metadata_store import ChunkMetadataStore
 app = FastAPI(title="Mutual Fund FAQ Assistant", version="0.1.0")
 _service: Optional["AssistantService"] = None
 _ui_path = Path(__file__).resolve().parent.parent / "ui"
+_frontend_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "FRONTEND_ORIGINS",
+        "http://localhost:8000,http://127.0.0.1:8000",
+    ).split(",")
+    if origin.strip()
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_frontend_origins,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
+)
 app.mount("/assets", StaticFiles(directory=str(_ui_path)), name="assets")
 
 
 @app.get("/", include_in_schema=False)
 def frontend() -> FileResponse:
     return FileResponse(_ui_path / "index.html")
+
+
+@app.get("/styles.css", include_in_schema=False)
+def frontend_styles() -> FileResponse:
+    return FileResponse(_ui_path / "styles.css", media_type="text/css")
+
+
+@app.get("/app.js", include_in_schema=False)
+def frontend_script() -> FileResponse:
+    return FileResponse(_ui_path / "app.js", media_type="text/javascript")
+
+
+@app.get("/config.js", include_in_schema=False)
+def frontend_config() -> FileResponse:
+    return FileResponse(_ui_path / "config.js", media_type="text/javascript")
 
 
 class AskRequest(BaseModel):

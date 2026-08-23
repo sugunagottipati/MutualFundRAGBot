@@ -28,6 +28,7 @@ class Settings:
     allowed_domains: tuple[str, ...]
     allowed_source_urls: tuple[str, ...]
     default_refusal_link: str
+    frontend_origins: tuple[str, ...]
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -51,6 +52,10 @@ class Settings:
             allowed_domains=allowed_domains,
             allowed_source_urls=allowed_source_urls,
             default_refusal_link=_read_env("DEFAULT_REFUSAL_LINK", DEFAULT_REFUSAL_LINK),
+            frontend_origins=_read_csv_env(
+                "FRONTEND_ORIGINS",
+                default="http://localhost:8000,http://127.0.0.1:8000",
+            ),
         )
 
     def validate(self) -> None:
@@ -78,6 +83,9 @@ class Settings:
 
         if self.default_refusal_link not in approved_set:
             raise ConfigError("DEFAULT_REFUSAL_LINK must be one of the approved allowlisted URLs.")
+
+        if any(origin == "*" for origin in self.frontend_origins):
+            raise ConfigError("FRONTEND_ORIGINS cannot contain '*'.")
 
 
 @lru_cache(maxsize=1)

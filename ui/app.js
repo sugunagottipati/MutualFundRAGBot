@@ -6,6 +6,11 @@ const drawer = document.querySelector('#source-drawer');
 const backdrop = document.querySelector('#drawer-backdrop');
 const sourceList = document.querySelector('#source-list');
 const toast = document.querySelector('#toast');
+const API_BASE_URL = (window.FUNDFACTS_CONFIG?.apiBaseUrl || '').replace(/\/+$/, '');
+
+function apiUrl(path) {
+  return `${API_BASE_URL}${path}`;
+}
 
 function showToast(message) {
   toast.textContent = message;
@@ -68,7 +73,7 @@ async function ask(query) {
   sendButton.disabled = true;
   queryInput.disabled = true;
   try {
-    const response = await fetch('/ask', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query }) });
+    const response = await fetch(apiUrl('/ask'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query }) });
     if (!response.ok) throw new Error('Assistant unavailable');
     addAnswer(await response.json());
   } catch (error) {
@@ -119,7 +124,7 @@ function setDrawer(open) {
 document.querySelector('#open-sources').addEventListener('click', async () => {
   setDrawer(true);
   try {
-    const response = await fetch('/sources');
+    const response = await fetch(apiUrl('/sources'));
     if (!response.ok) throw new Error('Source list unavailable');
     const payload = await response.json();
     sourceList.replaceChildren(...payload.sources.map((source) => {
