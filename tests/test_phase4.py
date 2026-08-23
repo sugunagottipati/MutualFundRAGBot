@@ -24,6 +24,8 @@ class TestIntentRouter:
         factual_queries = [
             "What are the holdings in HDFC Equity Fund?",
             "What is the expense ratio?",
+            "What is the exit load for HDFC Small Cap Fund?",
+            "What is the minimum SIP amount?",
             "Show me the top 5 holdings",
             "What sectors does this fund invest in?",
             "What is the 5-year return?",

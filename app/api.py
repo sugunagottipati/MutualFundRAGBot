@@ -132,7 +132,8 @@ def build_service(settings: Settings) -> AssistantService:
         ChromaIndexBuilder.collection_name
     )
     sample = collection.get(limit=1, include=["embeddings"])
-    if not sample["embeddings"]:
+    embeddings_sample = sample.get("embeddings")
+    if embeddings_sample is None or len(embeddings_sample) == 0:
         raise RuntimeError("vector collection contains no embeddings")
 
     embeddings = get_embeddings_client(
