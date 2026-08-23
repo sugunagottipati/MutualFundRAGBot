@@ -7,6 +7,7 @@ the index update reports an error, making it safe for scheduled automation.
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 
 from app.config import get_settings
 from ingestion.index_builder import IndexBuilder
@@ -15,14 +16,20 @@ from ingestion.pipeline import PipelineResult, run_ingestion
 
 def refresh_sources() -> dict[str, object]:
     """Ingest the approved source set and update the persistent index."""
-    ingestion_result: PipelineResult = run_ingestion()
+    settings = get_settings(validate=False)
+    processed_dir = Path(settings.sqlite_path).parent
+    raw_dir = Path(settings.vector_db_path).parent / "raw"
+    ingestion_result: PipelineResult = run_ingestion(
+        raw_dir=raw_dir,
+        processed_dir=processed_dir,
+    )
     if ingestion_result.failed:
         raise RuntimeError(
             f"Ingestion failed for {ingestion_result.failed} of "
             f"{ingestion_result.total_sources} approved sources"
         )
 
-    builder = IndexBuilder(settings=get_settings(validate=False))
+    builder = IndexBuilder(settings=settings, processed_dir=processed_dir)
     index_result = builder.build_index()
     if index_result.get("status") != "success" or index_result.get("errors"):
         details = index_result.get("errors") or index_result.get("message", "unknown index error")

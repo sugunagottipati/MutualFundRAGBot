@@ -32,7 +32,7 @@ def test_refresh_fails_when_any_approved_source_fails(monkeypatch):
     monkeypatch.setattr(
         refresh_sources,
         "run_ingestion",
-        lambda: PipelineResult(total_sources=7, processed=6, deduplicated=0, failed=1),
+        lambda **_: PipelineResult(total_sources=7, processed=6, deduplicated=0, failed=1),
     )
 
     with pytest.raises(RuntimeError, match="Ingestion failed"):
@@ -43,7 +43,7 @@ def test_refresh_fails_when_index_reports_errors(monkeypatch):
     monkeypatch.setattr(
         refresh_sources,
         "run_ingestion",
-        lambda: PipelineResult(total_sources=7, processed=7, deduplicated=0, failed=0),
+        lambda **_: PipelineResult(total_sources=7, processed=7, deduplicated=0, failed=0),
     )
 
     class FailingBuilder:

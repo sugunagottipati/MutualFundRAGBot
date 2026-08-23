@@ -315,7 +315,12 @@ def _utcnow() -> str:
 
 
 def _main() -> None:
-    result = run_ingestion()
+    from app.config import get_settings
+
+    settings = get_settings(validate=False)
+    processed_dir = Path(settings.sqlite_path).parent
+    raw_dir = Path(settings.vector_db_path).parent / "raw"
+    result = run_ingestion(raw_dir=raw_dir, processed_dir=processed_dir)
     print(
         "Ingestion completed: "
         f"total={result.total_sources}, processed={result.processed}, "

@@ -19,12 +19,16 @@ class IndexBuilder:
     def __init__(
         self,
         settings=None,
-        processed_dir: Path | str = "data/processed",
+        processed_dir: Path | str | None = None,
         embeddings_provider: Optional[str] = None,
         embeddings_api_key: Optional[str] = None,
     ):
         self.settings = settings or get_settings(validate=False)
-        self.processed_dir = Path(processed_dir)
+        self.processed_dir = (
+            Path(processed_dir)
+            if processed_dir is not None
+            else Path(self.settings.sqlite_path).parent
+        )
         self.documents_dir = self.processed_dir / "documents"
 
         # Initialize components
