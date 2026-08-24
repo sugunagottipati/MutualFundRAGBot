@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from types import SimpleNamespace
 from pathlib import Path
 
@@ -52,6 +53,36 @@ def test_daily_workflow_promotes_validated_data_to_git():
 
 def test_validate_corpus_accepts_current_processed_corpus():
     validate_corpus()
+
+
+def test_validate_corpus_can_skip_untracked_raw_files(tmp_path):
+    documents_dir = tmp_path / "documents"
+    documents_dir.mkdir(parents=True)
+    manifest_rows = []
+    for index, source in enumerate(APPROVED_SOURCE_URLS):
+        document = documents_dir / f"fund-{index}.json"
+        document.write_text(
+            json.dumps({
+                "metadata": {
+                    "source_url": source,
+                    "content_hash": f"hash-{index}",
+                    "raw_file_path": str(tmp_path / f"missing-{index}.html"),
+                },
+                "text": "facts",
+            }),
+            encoding="utf-8",
+        )
+        manifest_rows.append({
+            "source_url": source,
+            "content_hash": f"hash-{index}",
+            "processed_path": str(document),
+        })
+    (tmp_path / "document_manifest.jsonl").write_text(
+        "\n".join(json.dumps(row) for row in manifest_rows) + "\n",
+        encoding="utf-8",
+    )
+
+    validate_corpus(tmp_path, check_raw_files=False)
 
 
 def test_validate_corpus_rejects_manifest_document_mismatch(tmp_path):

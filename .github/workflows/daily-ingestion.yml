@@ -33,7 +33,7 @@ jobs:
       - name: Refresh approved Groww sources and index
         run: python -m scripts.refresh_sources
       - name: Validate refreshed corpus
-        run: python -m scripts.validate_project --skip-tests
+        run: python -m scripts.validate_project --skip-tests --skip-raw-files
       - name: Commit promoted corpus and index
         run: |
           git config user.name "github-actions[bot]"

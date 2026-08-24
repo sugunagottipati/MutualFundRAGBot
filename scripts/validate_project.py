@@ -55,7 +55,10 @@ def validate_policy_and_routing() -> None:
     check("refusal has one approved URL", refusal.count("https://") == 1)
 
 
-def validate_corpus(processed_dir: Path | str = ROOT / "data" / "processed") -> None:
+def validate_corpus(
+    processed_dir: Path | str = ROOT / "data" / "processed",
+    check_raw_files: bool = True,
+) -> None:
     """Verify manifest, processed documents, and raw files agree."""
     processed_root = Path(processed_dir)
     documents_dir = processed_root / "documents"
@@ -91,11 +94,12 @@ def validate_corpus(processed_dir: Path | str = ROOT / "data" / "processed") -> 
             raise RuntimeError(f"Source URL mismatch in {path.name}")
         if metadata.get("content_hash") != row.get("content_hash"):
             raise RuntimeError(f"Content hash mismatch in {path.name}")
-        raw_path = Path(metadata.get("raw_file_path", ""))
-        if not raw_path.is_absolute():
-            raw_path = ROOT / raw_path
-        if not raw_path.is_file():
-            raise RuntimeError(f"Processed document points to missing raw file: {raw_path}")
+        if check_raw_files:
+            raw_path = Path(metadata.get("raw_file_path", ""))
+            if not raw_path.is_absolute():
+                raw_path = ROOT / raw_path
+            if not raw_path.is_file():
+                raise RuntimeError(f"Processed document points to missing raw file: {raw_path}")
         if "<<<<<<<" in path.read_text(encoding="utf-8"):
             raise RuntimeError(f"Conflict marker remains in {path.name}")
 
@@ -189,6 +193,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Skip the full pytest regression suite.",
     )
+    parser.add_argument(
+        "--skip-raw-files",
+        action="store_true",
+        help="Skip raw HTML existence checks when raw snapshots are not present.",
+    )
     return parser
 
 
@@ -197,7 +206,7 @@ def main() -> int:
     load_dotenv(ROOT / ".env")
     try:
         validate_policy_and_routing()
-        validate_corpus()
+        validate_corpus(check_raw_files=not args.skip_raw_files)
         validate_index()
         if not args.skip_retrieval:
             validate_retrieval(args.query)
