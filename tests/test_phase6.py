@@ -78,6 +78,16 @@ def test_empty_context_uses_unknown_path_without_provider_call():
     assert client.chat.completions.calls == []
 
 
+def test_context_missing_requested_field_uses_unknown_path_without_provider_call():
+    client = FakeClient("The expense ratio is 0.50%.")
+    generator = GroqAnswerGenerator(GroqClient("test-key", "test-model", client=client))
+
+    response = generator.generate(_request("Benchmark: NIFTY 500 TRI"))
+
+    assert UNKNOWN_ANSWER in response
+    assert client.chat.completions.calls == []
+
+
 def test_unapproved_source_is_rejected():
     generator = GroqAnswerGenerator(
         GroqClient("test-key", "test-model", client=FakeClient("answer"))

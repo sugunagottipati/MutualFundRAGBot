@@ -22,6 +22,19 @@ def test_validator_accepts_compliant_response():
     assert result.reasons == ()
 
 
+def test_validator_rejects_answer_without_context_overlap():
+    response = _response("The fund invests in international debt instruments.")
+
+    result = ComplianceValidator().validate(
+        response,
+        SOURCE,
+        context="Expense ratio: 0.50%",
+    )
+
+    assert result.is_valid is False
+    assert "grounded" in result.reasons[0]
+
+
 def test_validator_rejects_policy_violations():
     response = (
         "You should invest because this may outperform. Second sentence. Third sentence. Fourth sentence.\n\n"

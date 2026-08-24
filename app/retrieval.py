@@ -25,12 +25,50 @@ _FUND_QUERY_ALIASES: tuple[tuple[str, str], ...] = (
     ("hdfc equity fund", "hdfc-equity-fund-direct-growth"),
 )
 
+_FACT_QUERY_ALIASES: tuple[tuple[str, str], ...] = (
+    ("net asset value", "nav"),
+    ("nav", "nav"),
+    ("expense ratio", "expense_ratio"),
+    ("exit load", "exit_load"),
+    ("minimum sip", "minimum_sip"),
+    ("sip amount", "minimum_sip"),
+    ("riskometer", "riskometer"),
+    ("benchmark", "benchmark"),
+    ("investment objective", "investment_objective"),
+    ("fund house", "fund_house"),
+    ("asset management company", "fund_house"),
+    ("tax implication", "tax_implications"),
+    ("taxation", "tax_implications"),
+    ("stamp duty", "stamp_duty"),
+    ("category", "category"),
+    ("plan type", "plan_type"),
+    ("direct plan", "plan_type"),
+    ("aum", "aum"),
+    ("fund size", "aum"),
+    ("return", "returns"),
+    ("returns", "returns"),
+    ("holdings", "holdings"),
+    ("portfolio", "holdings"),
+    ("sector", "sector_allocation"),
+    ("fund manager", "fund_managers"),
+    ("fund managers", "fund_managers"),
+)
+
 
 def _source_url_from_query(query: str) -> Optional[str]:
     normalized = re.sub(r"[^a-z0-9]+", " ", query.lower()).strip()
     for alias, slug in _FUND_QUERY_ALIASES:
         if alias in normalized:
             return f"https://groww.in/mutual-funds/{slug}"
+    return None
+
+
+def _fact_type_from_query(query: str) -> Optional[str]:
+    """Return the canonical factual field requested by a query, if any."""
+    normalized = re.sub(r"[^a-z0-9]+", " ", query.lower()).strip()
+    for alias, fact_type in _FACT_QUERY_ALIASES:
+        if alias in normalized:
+            return fact_type
     return None
 
 
@@ -122,6 +160,14 @@ class Retriever:
             )
             results.append(result)
 
+        fact_type = _fact_type_from_query(query)
+        if fact_type:
+            results.sort(
+                key=lambda result: (
+                    result.chunk.metadata.fact_type != fact_type,
+                    -result.relevance_score,
+                )
+            )
         return results[:top_k]
 
     def retrieve_by_section(

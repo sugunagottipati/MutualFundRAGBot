@@ -24,8 +24,12 @@ def load_cases(path: Path) -> list[dict[str, Any]]:
         if kind not in kinds or not case.get("query") or not case.get("expected_route"):
             raise ValueError("Each evaluation case needs kind, query, and expected_route")
         kinds[kind] += 1
-    if kinds != {"factual": 30, "advisory": 15, "boundary": 10}:
+    if kinds != {"factual": 54, "advisory": 15, "boundary": 10}:
         raise ValueError(f"Unexpected evaluation dataset composition: {kinds}")
+    for case in cases:
+        if case["kind"] == "factual":
+            if not case.get("expected_sources") or not case.get("expected_terms"):
+                raise ValueError("Factual cases need expected_sources and expected_terms")
     return cases
 
 
@@ -39,6 +43,8 @@ def evaluate(cases: list[dict[str, Any]], live: bool = False) -> dict[str, Any]:
     refusal_passes = 0
     citation_checks = 0
     citation_passes = 0
+    single_citation_checks = 0
+    single_citation_passes = 0
     answer_checks = 0
     answer_passes = 0
     service = None
@@ -66,6 +72,9 @@ def evaluate(cases: list[dict[str, Any]], live: bool = False) -> dict[str, Any]:
             response = service.ask(case["query"])
             citation_checks += 1
             citation_passes += response.citation in case["expected_sources"]
+            response_urls = enforcer.extract_urls(response.answer)
+            single_citation_checks += 1
+            single_citation_passes += len(response_urls) == 1
             answer_checks += 1
             expected_terms = case.get("expected_terms", [])
             answer = response.answer.lower()
@@ -75,7 +84,11 @@ def evaluate(cases: list[dict[str, Any]], live: bool = False) -> dict[str, Any]:
         "total_cases": len(cases),
         "route_accuracy": route_matches / len(cases),
         "refusal_precision": refusal_passes / refusal_checks if refusal_checks else 1.0,
-        "single_citation_adherence": refusal_passes / refusal_checks if refusal_checks else 1.0,
+        "single_citation_adherence": (
+            single_citation_passes / single_citation_checks
+            if single_citation_checks
+            else 1.0
+        ),
         "citation_relevance": citation_passes / citation_checks if citation_checks else None,
         "factual_term_match": answer_passes / answer_checks if answer_checks else None,
         "live": live,

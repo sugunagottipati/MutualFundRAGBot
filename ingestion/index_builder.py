@@ -120,6 +120,7 @@ class IndexBuilder:
                                 "source_url": c.metadata.source_url,
                                 "scheme_name": c.metadata.scheme_name,
                                 "section_header": c.metadata.section_header,
+                                "fact_type": c.metadata.fact_type,
                             }
                             for c in chunks
                         ],

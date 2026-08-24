@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from typing import Any, Optional
 
 from app.constants import APPROVED_SOURCE_URLS, MANDATORY_FOOTER_PREFIX
@@ -24,6 +25,26 @@ Return only up to three short factual sentences with no URL, citation, or footer
 """
 
 UNKNOWN_ANSWER = "The requested information is not available in the approved source context."
+
+_FACT_CONTEXT_TERMS: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("nav", ("nav", "net asset value")),
+    ("expense_ratio", ("expense ratio",)),
+    ("exit_load", ("exit load",)),
+    ("minimum_sip", ("minimum sip", "sip amount")),
+    ("riskometer", ("riskometer",)),
+    ("benchmark", ("benchmark",)),
+    ("investment_objective", ("investment objective",)),
+    ("fund_house", ("fund house", "asset management company")),
+    ("tax_implications", ("tax implication", "taxation", "capital gains")),
+    ("stamp_duty", ("stamp duty",)),
+    ("category", ("category",)),
+    ("plan_type", ("plan type", "direct plan", "regular plan", "growth plan")),
+    ("aum", ("aum", "assets under management", "fund size")),
+    ("returns", ("return", "returns")),
+    ("holdings", ("holding", "portfolio")),
+    ("sector_allocation", ("sector", "industry")),
+    ("fund_managers", ("fund manager", "fund management", "managed by")),
+)
 
 
 class GenerationError(RuntimeError):
@@ -120,6 +141,8 @@ class GroqAnswerGenerator:
         self._validate_request(request)
         if not request.context.strip():
             return self._format(UNKNOWN_ANSWER, request)
+        if not _context_supports_query(request.query, request.context):
+            return self._format(UNKNOWN_ANSWER, request)
 
         body = self.client.complete(request.query, request.context, system_prompt=system_prompt)
         return self._format(body, request)
@@ -141,3 +164,13 @@ class GroqAnswerGenerator:
             f"{clean_body}\n\nSource: {request.source_url}\n"
             f"{MANDATORY_FOOTER_PREFIX} {request.last_updated}"
         )
+
+
+def _context_supports_query(query: str, context: str) -> bool:
+    """Require the selected context to mention the requested factual field."""
+    normalized_query = " ".join(query.lower().split())
+    normalized_context = " ".join(context.lower().split())
+    for _, terms in _FACT_CONTEXT_TERMS:
+        if any(term in normalized_query for term in terms):
+            return any(term in normalized_context for term in terms)
+    return True

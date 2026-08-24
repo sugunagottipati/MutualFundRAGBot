@@ -39,6 +39,7 @@ class ComplianceValidator:
         response: str,
         expected_source_url: str,
         factual_mode: bool = True,
+        context: str = "",
     ) -> ValidationResult:
         reasons: list[str] = []
         urls = URL_PATTERN.findall(response)
@@ -61,6 +62,8 @@ class ComplianceValidator:
             reasons.append(f"answer exceeds {MAX_ANSWER_SENTENCES} sentences")
         if factual_mode and self._contains_advisory_language(body):
             reasons.append("answer contains advisory language")
+        if context and not self._has_context_overlap(body, context):
+            reasons.append("answer is not grounded in the supplied context")
 
         return ValidationResult(not reasons, tuple(reasons))
 
@@ -73,6 +76,12 @@ class ComplianceValidator:
     def _contains_advisory_language(text: str) -> bool:
         normalized = " ".join(text.lower().split())
         return any(term in normalized for term in ADVISORY_TERMS)
+
+    @staticmethod
+    def _has_context_overlap(answer: str, context: str) -> bool:
+        answer_words = set(re.findall(r"[a-z0-9%]{4,}", answer.lower()))
+        context_words = set(re.findall(r"[a-z0-9%]{4,}", context.lower()))
+        return len(answer_words & context_words) >= 1
 
 
 class ComplianceGenerationLoop:
@@ -93,7 +102,9 @@ class ComplianceGenerationLoop:
                 response = self.generator.generate(request, system_prompt=prompt)
             except (GenerationError, ValueError):
                 continue
-            if self.validator.validate(response, request.source_url).is_valid:
+            if self.validator.validate(
+                response, request.source_url, context=request.context
+            ).is_valid:
                 return response
         return self._fallback(request)
 

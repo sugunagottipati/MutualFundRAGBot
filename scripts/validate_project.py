@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -52,6 +53,56 @@ def validate_policy_and_routing() -> None:
 
     refusal = RefusalComposer().compose_refusal(QueryIntent.ADVISORY)
     check("refusal has one approved URL", refusal.count("https://") == 1)
+
+
+def validate_corpus(processed_dir: Path | str = ROOT / "data" / "processed") -> None:
+    """Verify manifest, processed documents, and raw files agree."""
+    processed_root = Path(processed_dir)
+    documents_dir = processed_root / "documents"
+    manifest_path = processed_root / "document_manifest.jsonl"
+    check("processed documents directory exists", documents_dir.is_dir(), str(documents_dir))
+    check("document manifest exists", manifest_path.is_file(), str(manifest_path))
+
+    manifest_rows: list[dict] = []
+    for line_number, line in enumerate(manifest_path.read_text(encoding="utf-8").splitlines(), 1):
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"Invalid manifest JSON on line {line_number}") from exc
+        manifest_rows.append(row)
+
+    manifest_paths = set()
+    for row in manifest_rows:
+        source_url = row.get("source_url")
+        document_path = row.get("processed_path")
+        if source_url not in APPROVED_SOURCE_URLS:
+            raise RuntimeError(f"Manifest contains unapproved source: {source_url}")
+        if not document_path:
+            raise RuntimeError("Manifest row is missing processed_path")
+        path = Path(document_path)
+        if not path.is_absolute():
+            path = ROOT / path
+        if not path.is_file():
+            raise RuntimeError(f"Manifest points to missing document: {document_path}")
+        manifest_paths.add(path.resolve())
+        document = json.loads(path.read_text(encoding="utf-8"))
+        metadata = document.get("metadata", {})
+        if metadata.get("source_url") != source_url:
+            raise RuntimeError(f"Source URL mismatch in {path.name}")
+        if metadata.get("content_hash") != row.get("content_hash"):
+            raise RuntimeError(f"Content hash mismatch in {path.name}")
+        raw_path = Path(metadata.get("raw_file_path", ""))
+        if not raw_path.is_absolute():
+            raw_path = ROOT / raw_path
+        if not raw_path.is_file():
+            raise RuntimeError(f"Processed document points to missing raw file: {raw_path}")
+        if "<<<<<<<" in path.read_text(encoding="utf-8"):
+            raise RuntimeError(f"Conflict marker remains in {path.name}")
+
+    document_paths = {path.resolve() for path in documents_dir.glob("*.json")}
+    check("manifest/document coverage", document_paths == manifest_paths)
+    check("processed corpus has seven approved sources", {row["source_url"] for row in manifest_rows} == set(APPROVED_SOURCE_URLS))
+    check("duplicate snapshots are manifest-tracked", len(manifest_rows) >= len(APPROVED_SOURCE_URLS))
 
 
 def validate_index() -> None:
@@ -146,6 +197,7 @@ def main() -> int:
     load_dotenv(ROOT / ".env")
     try:
         validate_policy_and_routing()
+        validate_corpus()
         validate_index()
         if not args.skip_retrieval:
             validate_retrieval(args.query)

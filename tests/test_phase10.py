@@ -11,8 +11,8 @@ from scripts import evaluate_phase10, refresh_sources
 def test_evaluation_dataset_has_required_prompt_mix():
     cases = evaluate_phase10.load_cases(evaluate_phase10.DEFAULT_DATASET)
 
-    assert len(cases) == 55
-    assert sum(case["kind"] == "factual" for case in cases) == 30
+    assert len(cases) == 79
+    assert sum(case["kind"] == "factual" for case in cases) == 54
     assert sum(case["kind"] == "advisory" for case in cases) == 15
     assert sum(case["kind"] == "boundary" for case in cases) == 10
 

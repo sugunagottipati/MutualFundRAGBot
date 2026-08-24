@@ -11,7 +11,8 @@ from ingestion.chunking import ChunkingSplitter, SectionAwareChunker, TokenCount
 from ingestion.embeddings import LocalEmbeddings, get_embeddings_client
 from ingestion.index import ChromaIndexBuilder
 from ingestion.metadata_store import ChunkMetadataStore
-from app.retrieval import _source_url_from_query
+from app.retrieval import _fact_type_from_query, _source_url_from_query
+from ingestion.chunking import _fact_type_for_chunk
 
 
 def test_source_url_is_inferred_from_named_fund_query() -> None:
@@ -21,6 +22,18 @@ def test_source_url_is_inferred_from_named_fund_query() -> None:
     assert _source_url_from_query(
         "What is the benchmark for HDFC Large and Mid Cap Fund?"
     ) == "https://groww.in/mutual-funds/hdfc-large-and-mid-cap-fund-direct-growth"
+
+
+def test_factual_query_maps_to_canonical_field() -> None:
+    assert _fact_type_from_query("What is the NAV of HDFC Small Cap Fund?") == "nav"
+    assert _fact_type_from_query("Tell me the tax implications") == "tax_implications"
+    assert _fact_type_from_query("Who is the fund manager?") == "fund_managers"
+
+
+def test_chunk_fact_type_is_inferred_from_section_and_content() -> None:
+    assert _fact_type_for_chunk("Fund details", "Expense ratio: 0.75%") == "expense_ratio"
+    assert _fact_type_for_chunk("Returns and rankings", "5 year return: 19.37%") == "returns"
+    assert _fact_type_for_chunk("General", "Unrelated prose") == "general"
 
 
 class TestTokenCounter:
@@ -148,6 +161,7 @@ Final section."""
         assert chunk.metadata.start_line >= 0
         assert chunk.metadata.end_line >= chunk.metadata.start_line
         assert chunk.metadata.chunk_content_hash
+        assert chunk.metadata.fact_type == "general"
 
 
 class TestLocalEmbeddings:

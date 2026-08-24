@@ -23,6 +23,7 @@ class ChunkMetadata:
     start_line: int
     end_line: int
     chunk_content_hash: str  # Hash of chunk content for deduplication
+    fact_type: str = "general"
 
 
 @dataclass
@@ -47,6 +48,7 @@ class Chunk:
                 "start_line": self.metadata.start_line,
                 "end_line": self.metadata.end_line,
                 "chunk_content_hash": self.metadata.chunk_content_hash,
+                "fact_type": self.metadata.fact_type,
             },
             "content": self.content,
         }
@@ -273,6 +275,7 @@ class SectionAwareChunker:
                     start_line=section_start_line + start_line_offset,
                     end_line=section_start_line + end_line_offset,
                     chunk_content_hash=chunk_content_hash,
+                    fact_type=_fact_type_for_chunk(section_header, chunk_content),
                 )
 
                 chunk = Chunk(metadata=metadata, content=chunk_content)
@@ -280,3 +283,31 @@ class SectionAwareChunker:
                 chunk_index += 1
 
         return chunks
+
+
+def _fact_type_for_chunk(section_header: str, content: str) -> str:
+    """Assign a stable factual label to a chunk for field-aware retrieval."""
+    text = f"{section_header} {content}".lower()
+    fact_patterns = (
+        ("nav", r"\bnav\b|net asset value"),
+        ("expense_ratio", r"expense\s+ratio"),
+        ("exit_load", r"exit\s+load"),
+        ("minimum_sip", r"minimum\s+sip|sip\s+amount"),
+        ("riskometer", r"riskometer|risk\s+(?:rating|level)"),
+        ("benchmark", r"benchmark"),
+        ("investment_objective", r"investment\s+objective"),
+        ("fund_house", r"fund\s+house|asset\s+management\s+company|\bamc\b"),
+        ("tax_implications", r"tax\s+implication|taxation|capital\s+gains"),
+        ("stamp_duty", r"stamp\s+duty"),
+        ("category", r"\bcategory\b|sub[- ]category"),
+        ("plan_type", r"plan\s+type|direct\s+plan|regular\s+plan|growth\s+plan"),
+        ("aum", r"\baum\b|assets\s+under\s+management|fund\s+size"),
+        ("returns", r"returns?|fund\s+returns|\b[135]0?\s*year\b"),
+        ("holdings", r"holdings?|portfolio"),
+        ("sector_allocation", r"sector|industry"),
+        ("fund_managers", r"fund\s+management|fund\s+manager|managed\s+by"),
+    )
+    for fact_type, pattern in fact_patterns:
+        if re.search(pattern, text):
+            return fact_type
+    return "general"

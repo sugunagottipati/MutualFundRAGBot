@@ -259,6 +259,8 @@ def _save_processed_document(
             "raw_file_path": str(raw_path),
             "section_headers": list(extracted.section_headers),
             "document_type": extracted.document_type,
+            "structured_facts": extracted.structured_facts,
+            "extraction_status": extracted.extraction_status,
         },
         "text": normalized_text,
     }
