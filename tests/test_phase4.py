@@ -27,6 +27,7 @@ class TestIntentRouter:
             "What is the exit load for HDFC Small Cap Fund?",
             "What is the minimum SIP amount?",
             "What is the NAV of HDFC Small Cap Fund?",
+            "NAV of HDFC Small Cap Fund?",
             "What is the current net asset value?",
             "What is the 3-year return?",
             "What is the investment objective?",

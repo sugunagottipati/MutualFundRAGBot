@@ -56,6 +56,7 @@ class IntentRouter:
             r"minimum.*sip.*(?:amount|investment)",
             r"(?:what|tell|show).*(?:\bnav\b|net\s+asset\s+value)",
             r"(?:current|latest)\s+(?:\bnav\b|net\s+asset\s+value)",
+            r"^\s*(?:the\s+)?(?:\bnav\b|net\s+asset\s+value)\b",
             r"(?:nav|net\s+asset\s+value).*date",
             r"what.*riskometer",
             r"riskometer.*(?:classification|rating|level)",
