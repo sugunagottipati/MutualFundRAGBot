@@ -38,7 +38,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed/documents/ data/processed/app.db data/chroma/
+          git add \
+            data/processed/documents/ \
+            data/processed/document_manifest.jsonl \
+            data/processed/ingestion_status.jsonl \
+            data/processed/source_health.jsonl \
+            data/processed/app.db \
+            data/chroma/
           if git diff --staged --quiet; then
             echo "No corpus or index changes to promote."
           else

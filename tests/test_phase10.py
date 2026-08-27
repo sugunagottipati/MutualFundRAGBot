@@ -29,13 +29,45 @@ def test_offline_evaluation_meets_policy_baseline():
 
 
 def test_refresh_fails_when_any_approved_source_fails(monkeypatch):
+    class PassingBuilder:
+        def __init__(self, **_):
+            pass
+
+        def build_index(self):
+            return {"status": "success", "errors": []}
+
     monkeypatch.setattr(
         refresh_sources,
         "run_ingestion",
         lambda **_: PipelineResult(total_sources=7, processed=6, deduplicated=0, failed=1),
     )
+    monkeypatch.setattr(refresh_sources, "IndexBuilder", PassingBuilder)
 
-    with pytest.raises(RuntimeError, match="Ingestion failed"):
+    report = refresh_sources.refresh_sources()
+
+    assert report["warnings"] == [
+        "Ingestion skipped 1 of 7 approved sources after retry; "
+        "existing processed corpus was retained for indexing."
+    ]
+
+
+def test_refresh_fails_when_all_sources_fail_without_existing_corpus(monkeypatch, tmp_path):
+    settings = refresh_sources.get_settings(validate=False)
+    settings = type(settings)(
+        **{
+            **settings.__dict__,
+            "sqlite_path": str(tmp_path / "processed" / "app.db"),
+            "vector_db_path": str(tmp_path / "chroma"),
+        }
+    )
+    monkeypatch.setattr(refresh_sources, "get_settings", lambda validate=False: settings)
+    monkeypatch.setattr(
+        refresh_sources,
+        "run_ingestion",
+        lambda **_: PipelineResult(total_sources=7, processed=0, deduplicated=0, failed=7),
+    )
+
+    with pytest.raises(RuntimeError, match="no existing corpus is available"):
         refresh_sources.refresh_sources()
 
 

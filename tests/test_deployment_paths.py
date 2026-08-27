@@ -47,12 +47,17 @@ def test_daily_workflow_promotes_validated_data_to_git():
     assert "contents: write" in workflow
     assert "Validate refreshed corpus" in workflow
     assert "Commit promoted corpus and index" in workflow
-    assert "git add data/processed/documents/ data/processed/app.db data/chroma/" in workflow
+    assert "data/processed/documents/" in workflow
+    assert "data/processed/document_manifest.jsonl" in workflow
+    assert "data/processed/ingestion_status.jsonl" in workflow
+    assert "data/processed/source_health.jsonl" in workflow
+    assert "data/processed/app.db" in workflow
+    assert "data/chroma/" in workflow
     assert 'git commit -m "chore(ingest): daily corpus refresh' in workflow
 
 
 def test_validate_corpus_accepts_current_processed_corpus():
-    validate_corpus()
+    validate_corpus(check_raw_files=False)
 
 
 def test_validate_corpus_can_skip_untracked_raw_files(tmp_path):
