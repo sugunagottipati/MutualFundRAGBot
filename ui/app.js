@@ -6,10 +6,32 @@ const drawer = document.querySelector('#source-drawer');
 const backdrop = document.querySelector('#drawer-backdrop');
 const sourceList = document.querySelector('#source-list');
 const toast = document.querySelector('#toast');
+const sourceCount = document.querySelector('#source-count');
+const lastIndexed = document.querySelector('#last-indexed');
 const API_BASE_URL = (window.FUNDFACTS_CONFIG?.apiBaseUrl || '').replace(/\/+$/, '');
 
 function apiUrl(path) {
   return `${API_BASE_URL}${path}`;
+}
+
+function formatIndexedDate(value) {
+  if (!value) return 'Not available';
+  const date = new Date(`${value}T00:00:00Z`);
+  return Number.isNaN(date.valueOf()) ? 'Not available' : date.toLocaleDateString(
+    'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }
+  );
+}
+
+async function loadSourceIntegrity() {
+  try {
+    const response = await fetch(apiUrl('/sources'));
+    if (!response.ok) throw new Error('Source status unavailable');
+    const payload = await response.json();
+    sourceCount.textContent = payload.sources.length;
+    lastIndexed.textContent = formatIndexedDate(payload.last_indexed);
+  } catch (error) {
+    lastIndexed.textContent = 'Not available';
+  }
 }
 
 function showToast(message) {
@@ -134,7 +156,7 @@ document.querySelector('#open-sources').addEventListener('click', async () => {
       item.innerHTML = `<strong>${name}</strong><a href="${source.source_url}" target="_blank" rel="noopener noreferrer">${source.source_url}</a><small>Approved source · Verified</small>`;
       return item;
     }));
-    document.querySelector('#source-count').textContent = payload.sources.length;
+    sourceCount.textContent = payload.sources.length;
   } catch (error) {
     sourceList.innerHTML = '<p class="muted">The approved source list is temporarily unavailable.</p>';
   }
@@ -142,3 +164,4 @@ document.querySelector('#open-sources').addEventListener('click', async () => {
 document.querySelector('#close-sources').addEventListener('click', () => setDrawer(false));
 backdrop.addEventListener('click', () => setDrawer(false));
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setDrawer(false); });
+loadSourceIntegrity();

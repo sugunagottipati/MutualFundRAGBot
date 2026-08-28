@@ -125,7 +125,10 @@ def test_deployment_endpoints_smoke(monkeypatch):
             return response
 
         def source_status(self):
-            return [{"source_url": url, "status": "approved"} for url in APPROVED_SOURCE_URLS]
+            return [
+                {"source_url": url, "status": "approved", "last_indexed": "2026-08-25"}
+                for url in APPROVED_SOURCE_URLS
+            ]
 
     monkeypatch.setattr("app.api.get_settings", lambda validate=True: settings)
     monkeypatch.setattr("app.api.get_service", lambda: FakeService())
@@ -139,6 +142,7 @@ def test_deployment_endpoints_smoke(monkeypatch):
     sources = client.get("/sources")
     assert sources.status_code == 200
     assert len(sources.json()["sources"]) == 7
+    assert sources.json()["last_indexed"] == "2026-08-25"
     ask = client.post("/ask", json={"query": "What is the expense ratio?"})
     assert ask.status_code == 200
     assert ask.json()["route"] == "factual"

@@ -120,7 +120,19 @@ class AssistantService:
         )
 
     def source_status(self) -> list[dict[str, str]]:
-        return [{"source_url": url, "status": "approved"} for url in APPROVED_SOURCE_URLS]
+        sources = []
+        store = getattr(self.retriever, "store", None)
+        for source_url in APPROVED_SOURCE_URLS:
+            chunks = store.get_chunks_by_source_url(source_url) if store else []
+            crawl_dates = [chunk.metadata.crawled_at for chunk in chunks if chunk.metadata.crawled_at]
+            sources.append(
+                {
+                    "source_url": source_url,
+                    "status": "approved",
+                    "last_indexed": max(crawl_dates).split("T", 1)[0] if crawl_dates else "",
+                }
+            )
+        return sources
 
     def _refusal_response(self, intent: QueryIntent) -> AskResponse:
         citation = self.refusal_composer.default_link
@@ -201,8 +213,13 @@ def health_check() -> dict[str, str]:
 
 
 @app.get("/sources")
-def source_status() -> dict[str, list[dict[str, str]]]:
-    return {"sources": get_service().source_status()}
+def source_status() -> dict[str, object]:
+    sources = get_service().source_status()
+    indexed_dates = [source["last_indexed"] for source in sources if source.get("last_indexed")]
+    return {
+        "sources": sources,
+        "last_indexed": max(indexed_dates) if indexed_dates else "",
+    }
 
 
 @app.post("/ask", response_model=AskResponse)
