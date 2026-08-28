@@ -2,12 +2,73 @@
 
 A facts-only mutual fund Q&A assistant built with a retrieval-augmented generation pipeline. The app answers objective questions from a locked set of approved Groww scheme pages and refuses non-factual or advisory requests.
 
+## Overview
+
+This project implements a small RAG-based assistant for mutual fund facts. It ingests a fixed corpus of Groww scheme pages, chunks and indexes the content, retrieves the most relevant passages, and generates concise answers grounded in those approved sources.
+
+The system is intentionally narrow and policy-driven:
+
+- It only uses approved Groww URLs as the source corpus
+- It answers factual questions only
+- It includes a citation URL and a source freshness footer
+- It refuses advisory or recommendation-style requests
+
 ## What this project does
 
 - Answers factual questions about mutual fund schemes
 - Uses a curated source corpus sourced from Groww scheme pages only
 - Returns concise answers with a citation link and a source freshness footer
 - Refuses investment advice, recommendations, and non-factual queries
+
+## Usage instructions
+
+### 1. Create the environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Start the app
+
+```bash
+uvicorn app.api:app --reload
+```
+
+Then open the app in a browser at:
+
+- http://localhost:8000/
+
+### 3. Query the API
+
+Example request:
+
+```bash
+curl -X POST "http://localhost:8000/ask" \
+  -H "Content-Type: application/json" \
+  -d '{"query":"What is the expense ratio of HDFC Large Cap Fund Direct Growth?"}'
+```
+
+Check the approved source list:
+
+```bash
+curl "http://localhost:8000/sources"
+```
+
+Check service health:
+
+```bash
+curl "http://localhost:8000/health"
+```
+
+### 4. Ingestion and rebuilds
+
+If you need to refresh the approved sources or rebuild the index, use the ingestion scripts in the repository. The project is designed to validate the fixed source inventory before use.
+
+## Approved source list
+
+The system is intentionally restricted to these seven Groww URLs:
 
 ## Approved source list
 
