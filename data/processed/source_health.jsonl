@@ -33,3 +33,10 @@
 {"source_url": "https://groww.in/mutual-funds/hdfc-large-and-mid-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-27T15:25:27+00:00", "http_status": 200, "detail": "Duplicate content hash"}
 {"source_url": "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-27T15:25:27+00:00", "http_status": 200, "detail": "Duplicate content hash"}
 {"source_url": "https://groww.in/mutual-funds/hdfc-retirement-savings-fund-equity-plan-direct-growth", "status": "ok", "checked_at": "2026-08-27T15:25:27+00:00", "http_status": 200, "detail": "Duplicate content hash"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:12+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:12+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:13+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth", "status": "ok", "checked_at": "2026-08-28T16:51:13+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-large-and-mid-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:14+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:15+00:00", "http_status": 200, "detail": "Ingested"}
+{"source_url": "https://groww.in/mutual-funds/hdfc-retirement-savings-fund-equity-plan-direct-growth", "status": "ok", "checked_at": "2026-08-28T16:51:16+00:00", "http_status": 200, "detail": "Ingested"}

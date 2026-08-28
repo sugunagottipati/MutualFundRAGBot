@@ -1,0 +1,450 @@
+{
+  "metadata": {
+    "source_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
+    "source_type": "scheme_page",
+    "scheme_name": "HDFC Gold ETF Fund of Fund Direct Plan Growth",
+    "source_priority": "medium",
+    "refresh_frequency": "weekly",
+    "status": "active",
+    "source_domain": "groww.in",
+    "final_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
+    "http_status": 200,
+    "content_type": "text/html",
+    "crawled_at": "2026-08-28T16:51:13+00:00",
+    "content_hash": "74e9285b24a029874ad5c3ddea7d044d59d0418beec201ba0222a380ddaed746",
+    "raw_file_path": "data/raw/https-groww-in-mutual-funds-hdfc-gold-etf-fund-of-fund-direct-plan-growth-20260828T165114Z.html",
+    "section_headers": [
+      "HDFC Gold ETF Fund of Fund Direct Plan Growth",
+      "Return calculator",
+      "Holdings ( 3 )",
+      "Minimum investments",
+      "Understand terms",
+      "Returns and rankings",
+      "Understand terms",
+      "Exit Load",
+      "Exit load, stamp duty and tax",
+      "Exit load",
+      "Stamp duty on investment: 0.005% (from July 1st, 2020)",
+      "Tax implication",
+      "Fund management",
+      "AA Arun Agarwal Feb 2023 - Present View details",
+      "NM Nandita Menezes Mar 2025 - Present View details",
+      "About HDFC Gold ETF Fund of Fund Direct Plan Growth",
+      "About HDFC Gold ETF Fund of Fund Direct Plan Growth",
+      "Investment Objective",
+      "Fund house",
+      "Fund house"
+    ],
+    "document_type": "html",
+    "structured_facts": {
+      "nav": 49.1341,
+      "nav_date": "27-Aug-2026",
+      "expense_ratio": 0.2,
+      "exit_load": "Exit load of 1%, if redeemed within 15 days.",
+      "min_sip_investment": 100,
+      "riskometer": "High",
+      "benchmark": "Domestic Price of Gold",
+      "fund_house": "HDFC Mutual Fund",
+      "category": "Commodities",
+      "sub_category": "Gold",
+      "plan_type": "Direct",
+      "aum": 11197.0455,
+      "launch_date": "01-Jan-2013",
+      "tax_implications": "If you redeem within two years, returns are taxed as per your Income Tax slab. If you redeem after two years, returns are taxed at 12.5%.",
+      "stamp_duty": "0.005% (from July 1st, 2020)",
+      "fund_managers": [
+        {
+          "scheme_code": "119132",
+          "plan_id": null,
+          "date_from": "2023-02-14T18:30:00.000Z",
+          "person_id": null,
+          "person_name": "Arun Agarwal",
+          "education": "Mr. Agarwal is a B.Com. and Chartered Accountant",
+          "experience": "Prior to joining HDFC Asset Management Company Limited, he has worked with SBI Funds Management Pvt. Ltd., ICICI Bank Limited, UTI Asset Management Pvt. Ltd.",
+          "funds_managed": [
+            {
+              "scheme_name": "HDFC Gold ETF Fund of Fund Direct Plan Growth",
+              "scheme_code": "119132",
+              "search_id": "hdfc-gold-etf-fund-of-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Balanced Advantage Fund Direct Growth",
+              "scheme_code": "118968",
+              "search_id": "hdfc-balanced-advantage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 50 Index Fund Direct Growth",
+              "scheme_code": "119063",
+              "search_id": "hdfc-nifty-50-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE Sensex Index Fund Direct Growth",
+              "scheme_code": "119065",
+              "search_id": "hdfc-bse-sensex-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Equity Savings Direct Plan Growth",
+              "scheme_code": "119128",
+              "search_id": "hdfc-equity-savings-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Multi Asset Allocation Fund Direct Growth",
+              "scheme_code": "119131",
+              "search_id": "hdfc-multi-asset-allocation-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Arbitrage Fund Direct Growth",
+              "scheme_code": "129052",
+              "search_id": "hdfc-arbitrage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Equity Plan Direct Growth",
+              "scheme_code": "136094",
+              "search_id": "hdfc-retirement-fund-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Equity Plan Direct Growth",
+              "scheme_code": "136464",
+              "search_id": "hdfc-retirement-fund-hybrid-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Debt Plan Direct Growth",
+              "scheme_code": "136465",
+              "search_id": "hdfc-retirement-fund-hybrid-debt-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 50 ETF IDCW",
+              "scheme_code": "135853",
+              "search_id": "hdfc-nifty-etf"
+            },
+            {
+              "scheme_name": "HDFC NIFTY50 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "149107",
+              "search_id": "hdfc-nifty50-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Developed World Overseas Equity Passive FoF Direct Growth",
+              "scheme_code": "149180",
+              "search_id": "hdfc-developed-world-overseas-equity-passive-fof-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Next 50 Index Fund Direct Growth",
+              "scheme_code": "149288",
+              "search_id": "hdfc-nifty-next-50-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 100 Index Fund Direct Growth",
+              "scheme_code": "149868",
+              "search_id": "hdfc-nifty-100-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 100 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "149870",
+              "search_id": "hdfc-nifty-100-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Silver ETF FoF Direct Growth",
+              "scheme_code": "150737",
+              "search_id": "hdfc-silver-etf-fof-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Midcap 150 Index Fund Direct Growth",
+              "scheme_code": "151724",
+              "search_id": "hdfc-nifty-midcap-150-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Smallcap 250 Index Fund Direct Growth",
+              "scheme_code": "151727",
+              "search_id": "hdfc-nifty-smallcap-250-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE 500 Index Fund Direct Growth",
+              "scheme_code": "151728",
+              "search_id": "hdfc-bse-500-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE Sensex ETF",
+              "scheme_code": "135854",
+              "search_id": "hdfc-bse-sensex-etf"
+            },
+            {
+              "scheme_name": "HDFC NIFTY200 Momentum 30 Index Fund Direct Growth",
+              "scheme_code": "152430",
+              "search_id": "hdfc-nifty200-momentum-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Realty Index Fund Direct Growth",
+              "scheme_code": "152521",
+              "search_id": "hdfc-nifty-realty-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY100 Low Volatility 30 Index Fund Direct Growth",
+              "scheme_code": "152713",
+              "search_id": "hdfc-nifty100-low-volatility-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty500 Multicap 50:25:25 Index Fund Direct Growth",
+              "scheme_code": "152778",
+              "search_id": "hdfc-nifty500-multicap-50:25:25-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty LargeMidcap 250 Index Fund Direct Growth",
+              "scheme_code": "152889",
+              "search_id": "hdfc-nifty-largemidcap-250-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty India Digital Index Fund Direct Growth",
+              "scheme_code": "153097",
+              "search_id": "hdfc-nifty-india-digital-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty100 Quality 30 Index Fund Direct Growth",
+              "scheme_code": "153264",
+              "search_id": "hdfc-nifty100-quality-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Top 20 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "153405",
+              "search_id": "hdfc-nifty-top-20-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE India Sector Leaders Index Fund Direct Growth",
+              "scheme_code": "153959",
+              "search_id": "hdfc-bse-india-sector-leaders-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty India Consumption Index Fund Direct Growth",
+              "scheme_code": "154179",
+              "search_id": "hdfc-nifty-india-consumption-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Auto Index Fund Direct Growth",
+              "scheme_code": "154427",
+              "search_id": "hdfc-nifty-auto-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Metal ETF FoF Direct Growth",
+              "scheme_code": "154505",
+              "search_id": "hdfc-nifty-metal-etf-fof-direct-growth"
+            }
+          ]
+        },
+        {
+          "scheme_code": "119132",
+          "plan_id": null,
+          "date_from": "2025-03-28T18:30:00.000Z",
+          "person_id": null,
+          "person_name": "Nandita Menezes",
+          "education": "CA (ICAI, INDIA), B.Com (University of Mumbai)",
+          "experience": "Prior to joining HDFC AMC, she was associated with S.V. Ghatalia & Associates LLP.",
+          "funds_managed": [
+            {
+              "scheme_name": "HDFC Gold ETF Fund of Fund Direct Plan Growth",
+              "scheme_code": "119132",
+              "search_id": "hdfc-gold-etf-fund-of-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Balanced Advantage Fund Direct Growth",
+              "scheme_code": "118968",
+              "search_id": "hdfc-balanced-advantage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 50 Index Fund Direct Growth",
+              "scheme_code": "119063",
+              "search_id": "hdfc-nifty-50-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE Sensex Index Fund Direct Growth",
+              "scheme_code": "119065",
+              "search_id": "hdfc-bse-sensex-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Equity Savings Direct Plan Growth",
+              "scheme_code": "119128",
+              "search_id": "hdfc-equity-savings-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Multi Asset Allocation Fund Direct Growth",
+              "scheme_code": "119131",
+              "search_id": "hdfc-multi-asset-allocation-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Arbitrage Fund Direct Growth",
+              "scheme_code": "129052",
+              "search_id": "hdfc-arbitrage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Equity Plan Direct Growth",
+              "scheme_code": "136094",
+              "search_id": "hdfc-retirement-fund-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Equity Plan Direct Growth",
+              "scheme_code": "136464",
+              "search_id": "hdfc-retirement-fund-hybrid-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Debt Plan Direct Growth",
+              "scheme_code": "136465",
+              "search_id": "hdfc-retirement-fund-hybrid-debt-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY50 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "149107",
+              "search_id": "hdfc-nifty50-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Developed World Overseas Equity Passive FoF Direct Growth",
+              "scheme_code": "149180",
+              "search_id": "hdfc-developed-world-overseas-equity-passive-fof-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Next 50 Index Fund Direct Growth",
+              "scheme_code": "149288",
+              "search_id": "hdfc-nifty-next-50-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 100 Index Fund Direct Growth",
+              "scheme_code": "149868",
+              "search_id": "hdfc-nifty-100-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY 100 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "149870",
+              "search_id": "hdfc-nifty-100-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Silver ETF FoF Direct Growth",
+              "scheme_code": "150737",
+              "search_id": "hdfc-silver-etf-fof-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Midcap 150 Index Fund Direct Growth",
+              "scheme_code": "151724",
+              "search_id": "hdfc-nifty-midcap-150-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Smallcap 250 Index Fund Direct Growth",
+              "scheme_code": "151727",
+              "search_id": "hdfc-nifty-smallcap-250-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE 500 Index Fund Direct Growth",
+              "scheme_code": "151728",
+              "search_id": "hdfc-bse-500-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY200 Momentum 30 Index Fund Direct Growth",
+              "scheme_code": "152430",
+              "search_id": "hdfc-nifty200-momentum-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY Realty Index Fund Direct Growth",
+              "scheme_code": "152521",
+              "search_id": "hdfc-nifty-realty-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC NIFTY100 Low Volatility 30 Index Fund Direct Growth",
+              "scheme_code": "152713",
+              "search_id": "hdfc-nifty100-low-volatility-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty500 Multicap 50:25:25 Index Fund Direct Growth",
+              "scheme_code": "152778",
+              "search_id": "hdfc-nifty500-multicap-50:25:25-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty LargeMidcap 250 Index Fund Direct Growth",
+              "scheme_code": "152889",
+              "search_id": "hdfc-nifty-largemidcap-250-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty India Digital Index Fund Direct Growth",
+              "scheme_code": "153097",
+              "search_id": "hdfc-nifty-india-digital-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty100 Quality 30 Index Fund Direct Growth",
+              "scheme_code": "153264",
+              "search_id": "hdfc-nifty100-quality-30-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Top 20 Equal Weight Index Fund Direct Growth",
+              "scheme_code": "153405",
+              "search_id": "hdfc-nifty-top-20-equal-weight-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC BSE India Sector Leaders Index Fund Direct Growth",
+              "scheme_code": "153959",
+              "search_id": "hdfc-bse-india-sector-leaders-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty India Consumption Index Fund Direct Growth",
+              "scheme_code": "154179",
+              "search_id": "hdfc-nifty-india-consumption-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Gold Silver Passive FoF Direct Growth",
+              "scheme_code": "154355",
+              "search_id": "hdfc-gold-silver-passive-fof-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Auto Index Fund Direct Growth",
+              "scheme_code": "154427",
+              "search_id": "hdfc-nifty-auto-index-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Nifty Metal ETF FoF Direct Growth",
+              "scheme_code": "154505",
+              "search_id": "hdfc-nifty-metal-etf-fof-direct-growth"
+            }
+          ]
+        }
+      ],
+      "returns": {
+        "1y": 55.36,
+        "3y": 37.39,
+        "5y": 26.07,
+        "10y": 16.51
+      },
+      "category_returns": {
+        "1y": 76.00068826008322,
+        "3y": 34.06922462588724,
+        "5y": 20.95384843351483,
+        "10y": 17.040816927548995
+      },
+      "display_lines": [
+        "Expense ratio: 0.2%",
+        "Exit load: Exit load of 1%, if redeemed within 15 days.",
+        "Minimum SIP amount: Rs 100",
+        "Riskometer: High",
+        "Benchmark: Domestic Price of Gold"
+      ]
+    },
+    "extraction_status": {
+      "nav": "extracted",
+      "nav_date": "extracted",
+      "expense_ratio": "extracted",
+      "exit_load": "extracted",
+      "min_sip_investment": "extracted",
+      "minimum_lumpsum_investment": "missing",
+      "riskometer": "extracted",
+      "benchmark": "extracted",
+      "investment_objective": "missing",
+      "fund_house": "extracted",
+      "category": "extracted",
+      "plan_type": "extracted",
+      "aum": "extracted",
+      "returns": "extracted",
+      "category_returns": "extracted",
+      "category_rank": "missing",
+      "holdings": "missing",
+      "sector_allocation": "missing",
+      "fund_managers": "extracted",
+      "launch_date": "extracted",
+      "tax_implications": "extracted",
+      "stamp_duty": "extracted"
+    }
+  },
+  "text": "## HDFC Gold ETF Fund of Fund Direct Plan Growth\n## Return calculator\nOver the past\nTotal investment\nWould've become\nHistoric returns\nReturns\n1 year\n\u20b960,000\n\u20b966,573\n+ 10.96 %\n3 years\n\u20b91,80,000\n\u20b93,06,047\n+ 70.03 %\n5 years\n\u20b93,00,000\n\u20b96,37,115\n+ 112.37 %\n10 years\n\u20b96,00,000\n\u20b918,40,563\n+ 206.76 %\n## Holdings ( 3 )\nName\nSector\nInstruments\nAssets\nHDFC Gold ETF\nUnspecified\nMutual Fund\n100.05%\nRepo\nUnspecified\nRepo\n0.04%\nNet Payables\nUnspecified\nNet Payables\n-0.09%\n## Minimum investments\n## Understand terms\nAverage of the yearly returns of a mutual fund over a given period.\nThe total return of a mutual fund over a given period.\n## Returns and rankings\nName\n3Y\n5Y\n10Y\nAll\nFund returns\n+37.4%\n+26.1%\n+16.5%\n+11.5%\nCategory average ( Commodities Gold )\n+34.1%\n+21.0%\n+17.0%\n--\nRank ( Commodities Gold )\n7\n5\n3\n--\n## Understand terms\nA fee payable to a mutual fund house for managing your mutual fund investments. It is the total percentage of a company's fund assets used for administrative, management, advertising, and other expenses.\nA percentage of your capital gains payable to the government upon exiting your mutual fund investments. Taxation is categorized as long-term capital gains (LTCG) and short-term capital gains (STCG) depending on your holding period and the type of fund.\nA fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.\nA form of tax payable for the purchase or sale of an asset or security.\n## Exit Load\n## Exit load, stamp duty and tax\n## Exit load\n## Stamp duty on investment: 0.005% (from July 1st, 2020)\n## Tax implication\n## Fund management\n## AA Arun Agarwal Feb 2023 - Present View details\n## NM Nandita Menezes Mar 2025 - Present View details\n## About HDFC Gold ETF Fund of Fund Direct Plan Growth\n## Investment Objective\n## Fund house\n## Fund details\nexpense ratio: 0.2%\nexit load: exit load of 1%, if redeemed within 15 days.\nminimum sip amount: Rs 100\nriskometer: High\nbenchmark: Domestic Price of Gold"
+}
