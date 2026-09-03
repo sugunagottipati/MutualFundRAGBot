@@ -1,0 +1,371 @@
+{
+  "metadata": {
+    "source_url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
+    "source_type": "scheme_page",
+    "scheme_name": "HDFC Small Cap Fund Direct Growth",
+    "source_priority": "high",
+    "refresh_frequency": "weekly",
+    "status": "active",
+    "source_domain": "groww.in",
+    "final_url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
+    "http_status": 200,
+    "content_type": "text/html",
+    "crawled_at": "2026-09-03T09:06:51+00:00",
+    "content_hash": "9826fd37960dbfd189ee0f6c6d89d9226d6e725c324949feb2dc28c84203b5da",
+    "raw_file_path": "data/raw/https-groww-in-mutual-funds-hdfc-small-cap-fund-direct-growth-20260903T090651Z.html",
+    "section_headers": [
+      "HDFC Small Cap Fund Direct Growth",
+      "Return calculator",
+      "Holdings ( 86 )",
+      "Minimum investments",
+      "Understand terms",
+      "Returns and rankings",
+      "Understand terms",
+      "Exit Load",
+      "Exit load, stamp duty and tax",
+      "Exit load",
+      "Stamp duty on investment: 0.005% (from July 1st, 2020)",
+      "Tax implication",
+      "Compare similar funds",
+      "Fund management",
+      "DM Dhruv Muchhal Jun 2023 - Present View details",
+      "CS Chirag Setalvad Jun 2014 - Present View details",
+      "About HDFC Small Cap Fund Direct Growth",
+      "About HDFC Small Cap Fund Direct Growth",
+      "Investment Objective",
+      "Fund house",
+      "Fund house"
+    ],
+    "document_type": "html",
+    "structured_facts": {
+      "nav": 160.418,
+      "nav_date": "02-Sep-2026",
+      "expense_ratio": 0.75,
+      "exit_load": "Exit load of 1% if redeemed within 1 year",
+      "min_sip_investment": 100,
+      "riskometer": "Very High",
+      "benchmark": "BSE 250 SmallCap TRI",
+      "fund_house": "HDFC Mutual Fund",
+      "category": "Equity",
+      "sub_category": "Small Cap",
+      "plan_type": "Direct",
+      "aum": 41679.0037,
+      "launch_date": "01-Jan-2013",
+      "tax_implications": "If you redeem within one year, returns are taxed at 20%. If you redeem after one year, returns exceeding Rs 1.25 lakh in a financial year are taxed at 12.5%.",
+      "stamp_duty": "0.005% (from July 1st, 2020)",
+      "fund_managers": [
+        {
+          "scheme_code": "130503",
+          "plan_id": null,
+          "date_from": "2023-06-21T18:30:00.000Z",
+          "person_id": null,
+          "person_name": "Dhruv Muchhal",
+          "education": "Mr. Dhruv has done B.Com, CA and CFA",
+          "experience": "Prior to joining HDFC MF,he has worked with Motilal Oswal Financial Services Ltd., Goldman Sachs, CRISIL Global Research & Analytics and Deloitte Haskins & Sells",
+          "funds_managed": [
+            {
+              "scheme_name": "HDFC Flexi Cap Direct Plan Growth",
+              "scheme_code": "118955",
+              "search_id": "hdfc-equity-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Value Fund Direct Plan Growth",
+              "scheme_code": "118935",
+              "search_id": "hdfc-value-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Ultra Short to Short Term Fund Direct Growth",
+              "scheme_code": "118942",
+              "search_id": "hdfc-ultra-short-to-short-term-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Focused Fund Direct Growth",
+              "scheme_code": "118950",
+              "search_id": "hdfc-focused-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Floating Interest Rates Fund Direct Plan Growth",
+              "scheme_code": "118961",
+              "search_id": "hdfc-floating-interest-rates-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Balanced Advantage Fund Direct Growth",
+              "scheme_code": "118968",
+              "search_id": "hdfc-balanced-advantage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Dynamic Term Fund Direct Plan Growth",
+              "scheme_code": "119075",
+              "search_id": "hdfc-dynamic-term-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Medium Term Fund Direct Growth",
+              "scheme_code": "119081",
+              "search_id": "hdfc-medium-term-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Medium to Long Term Fund Direct Growth",
+              "scheme_code": "119069",
+              "search_id": "hdfc-medium-to-long-term-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Infrastructure Fund Direct Growth",
+              "scheme_code": "118979",
+              "search_id": "hdfc-infrastructure-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Corporate Bond Fund Direct Plan Growth",
+              "scheme_code": "118987",
+              "search_id": "hdfc-medium-term-opportunities-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Conservative Hybrid Fund Direct Growth",
+              "scheme_code": "119118",
+              "search_id": "hdfc-conservative-hybrid-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Mid Cap Fund Direct Growth",
+              "scheme_code": "118989",
+              "search_id": "hdfc-mid-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Equity Savings Direct Plan Growth",
+              "scheme_code": "119128",
+              "search_id": "hdfc-equity-savings-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Multi Asset Allocation Fund Direct Growth",
+              "scheme_code": "119131",
+              "search_id": "hdfc-multi-asset-allocation-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Aggressive Hybrid Fund Direct Plan Growth",
+              "scheme_code": "119062",
+              "search_id": "hdfc-aggressive-hybrid-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Short Term Fund Direct Plan Growth",
+              "scheme_code": "119016",
+              "search_id": "hdfc-short-term-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC ELSS Tax Saver Fund Direct Plan Growth",
+              "scheme_code": "119060",
+              "search_id": "hdfc-elss-tax-saver-fund-direct-plan-growth"
+            },
+            {
+              "scheme_name": "HDFC Large Cap Fund Direct Growth",
+              "scheme_code": "119018",
+              "search_id": "hdfc-large-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Credit Risk Fund Direct Growth",
+              "scheme_code": "128051",
+              "search_id": "hdfc-credit-risk-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Banking and PSU Debt Fund Direct Growth",
+              "scheme_code": "128629",
+              "search_id": "hdfc-banking-and-psu-debt-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Arbitrage Fund Direct Growth",
+              "scheme_code": "129052",
+              "search_id": "hdfc-arbitrage-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Large & Mid Cap Fund Direct Growth",
+              "scheme_code": "130498",
+              "search_id": "hdfc-large-mid-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Small Cap Fund Direct Growth",
+              "scheme_code": "130503",
+              "search_id": "hdfc-small-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Ultra Short Term Fund Direct Growth",
+              "scheme_code": "145034",
+              "search_id": "hdfc-ultra-short-term-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Liquid Direct Plan Growth",
+              "scheme_code": "119091",
+              "search_id": "hdfc-liquid-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Overnight Fund Direct Growth",
+              "scheme_code": "119110",
+              "search_id": "hdfc-overnight-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Money Market Fund Direct Growth",
+              "scheme_code": "119092",
+              "search_id": "hdfc-money-market-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Housing Opportunities Fund Direct Growth",
+              "scheme_code": "141924",
+              "search_id": "hdfc-housing-opportunities-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Banking & Financial Services Fund Direct Growth",
+              "scheme_code": "148986",
+              "search_id": "hdfc-banking-financial-services-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Multi Cap Fund Direct Growth",
+              "scheme_code": "149368",
+              "search_id": "hdfc-multi-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Business Cycle Fund Direct Growth",
+              "scheme_code": "150805",
+              "search_id": "hdfc-business-cycle-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Long Term Fund Direct Growth",
+              "scheme_code": "151313",
+              "search_id": "hdfc-long-term-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC MNC Fund Direct Growth",
+              "scheme_code": "151458",
+              "search_id": "hdfc-mnc-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Defence Fund Direct Growth",
+              "scheme_code": "151750",
+              "search_id": "hdfc-defence-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Consumption Fund Direct Growth",
+              "scheme_code": "151804",
+              "search_id": "hdfc-consumption-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Transportation and Logistics Fund Direct Growth",
+              "scheme_code": "151901",
+              "search_id": "hdfc-transportation-and-logistics-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Technology Fund Direct Growth",
+              "scheme_code": "152059",
+              "search_id": "hdfc-technology-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Pharma And Healthcare Fund Direct Growth",
+              "scheme_code": "152082",
+              "search_id": "hdfc-pharma-and-healthcare-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Manufacturing Fund Direct Growth",
+              "scheme_code": "152600",
+              "search_id": "hdfc-manufacturing-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Children's Fund Direct Plan",
+              "scheme_code": "119066",
+              "search_id": "hdfc-children's-fund-direct-plan"
+            },
+            {
+              "scheme_name": "HDFC Innovation Fund Direct Growth",
+              "scheme_code": "153620",
+              "search_id": "hdfc-innovation-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Diversified Equity All Cap Active FoF Direct Growth",
+              "scheme_code": "153860",
+              "search_id": "hdfc-diversified-equity-all-cap-active-fof-direct-growth"
+            }
+          ]
+        },
+        {
+          "scheme_code": "130503",
+          "plan_id": null,
+          "date_from": "2014-06-27T18:30:00.000Z",
+          "person_id": null,
+          "person_name": "Chirag Setalvad",
+          "education": "Mr. Setalvad is a B. Sc and MBA from University of North Carolina.",
+          "experience": "Prior to joining HDFC AMC he has worked with New Vernon Advisory Services Ltd., HDFC AMC and ING Barings N.V.",
+          "funds_managed": [
+            {
+              "scheme_name": "HDFC Mid Cap Fund Direct Growth",
+              "scheme_code": "118989",
+              "search_id": "hdfc-mid-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Small Cap Fund Direct Growth",
+              "scheme_code": "130503",
+              "search_id": "hdfc-small-cap-fund-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Equity Plan Direct Growth",
+              "scheme_code": "136094",
+              "search_id": "hdfc-retirement-fund-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Equity Plan Direct Growth",
+              "scheme_code": "136464",
+              "search_id": "hdfc-retirement-fund-hybrid-equity-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Retirement Fund Hybrid Debt Plan Direct Growth",
+              "scheme_code": "136465",
+              "search_id": "hdfc-retirement-fund-hybrid-debt-plan-direct-growth"
+            },
+            {
+              "scheme_name": "HDFC Children's Fund Direct Plan",
+              "scheme_code": "119066",
+              "search_id": "hdfc-children's-fund-direct-plan"
+            }
+          ]
+        }
+      ],
+      "returns": {
+        "1y": -0.96,
+        "3y": 11.19,
+        "5y": 15.81,
+        "10y": 17.59
+      },
+      "category_returns": {
+        "1y": -6.287113895986091,
+        "3y": 19.69509809136353,
+        "5y": 22.634728896983034,
+        "10y": 16.071243208606507
+      },
+      "display_lines": [
+        "Expense ratio: 0.75%",
+        "Exit load: Exit load of 1% if redeemed within 1 year",
+        "Minimum SIP amount: Rs 100",
+        "Riskometer: Very High",
+        "Benchmark: BSE 250 SmallCap TRI"
+      ]
+    },
+    "extraction_status": {
+      "nav": "extracted",
+      "nav_date": "extracted",
+      "expense_ratio": "extracted",
+      "exit_load": "extracted",
+      "min_sip_investment": "extracted",
+      "minimum_lumpsum_investment": "missing",
+      "riskometer": "extracted",
+      "benchmark": "extracted",
+      "investment_objective": "missing",
+      "fund_house": "extracted",
+      "category": "extracted",
+      "plan_type": "extracted",
+      "aum": "extracted",
+      "returns": "extracted",
+      "category_returns": "extracted",
+      "category_rank": "missing",
+      "holdings": "missing",
+      "sector_allocation": "missing",
+      "fund_managers": "extracted",
+      "launch_date": "extracted",
+      "tax_implications": "extracted",
+      "stamp_duty": "extracted"
+    }
+  },
+  "text": "## HDFC Small Cap Fund Direct Growth\n## Return calculator\nOver the past\nTotal investment\nWould've become\nHistoric returns\nReturns\n1 year\n\u20b960,000\n\u20b958,410\n-2.65 %\n3 years\n\u20b91,80,000\n\u20b91,93,762\n+ 7.65 %\n5 years\n\u20b93,00,000\n\u20b94,16,200\n+ 38.73 %\n10 years\n\u20b96,00,000\n\u20b915,36,450\n+ 156.08 %\n## Holdings ( 86 )\nName\nSector\nInstruments\nAssets\nRepo\nUnspecified\nRepo\n9.94%\nFirstsource Solutions Ltd\nIndustrials\nEquity\n4.24%\nAster DM Healthcare Ltd\nHealthcare\nEquity\n3.89%\nGabriel India Ltd\nConsumer Discretionary\nEquity\n3.34%\neClerx Services Ltd\nTechnology\nEquity\n2.85%\nBank Of Baroda\nFinancial\nEquity\n2.73%\nKrishna Institute Of Medical Sciences Ltd\nHealthcare\nEquity\n2.15%\nEris Lifesciences Ltd\nHealthcare\nEquity\n2.10%\nFortis Healthcare Ltd\nHealthcare\nEquity\n1.99%\nIndian Bank\nFinancial\nEquity\n1.94%\nThe Federal Bank Ltd\nFinancial\nEquity\n1.79%\nHome First Finance Company India Ltd\nFinancial\nEquity\n1.73%\nApar Industries Ltd\nDiversified\nEquity\n1.62%\nPVR Ltd\nConsumer Discretionary\nEquity\n1.57%\nSonata Software Ltd\nTechnology\nEquity\n1.55%\nThe Great Eastern Shipping Company Ltd\nEnergy & Utilities\nEquity\n1.47%\nVijaya Diagnostic Centre Ltd\nHealthcare\nEquity\n1.46%\nChalet Hotels Ltd\nConsumer Discretionary\nEquity\n1.46%\nSuprajit Engineering Ltd\nConsumer Discretionary\nEquity\n1.43%\nKalpataru Power Transmission Ltd\nIndustrials\nEquity\n1.43%\nPearl Global Industries Ltd\nConsumer Discretionary\nEquity\n1.42%\nSudarshan Chemical Industries Ltd\nMaterials\nEquity\n1.41%\nGodrej Consumer Products Ltd\nConsumer Staples\nEquity\n1.40%\nAditya Vision Ltd\nConsumer Discretionary\nEquity\n1.35%\nPower Mech Projects Ltd\nIndustrials\nEquity\n1.35%\nCity Union Bank Ltd\nFinancial\nEquity\n1.32%\nTimken India Ltd\nIndustrials\nEquity\n1.32%\nVardhman Textiles Ltd\nConsumer Discretionary\nEquity\n1.31%\nBlue Dart Express Ltd\nIndustrials\nEquity\n1.25%\nDodla Dairy Ltd\nConsumer Staples\nEquity\n1.24%\nFiem Industries Ltd\nConsumer Discretionary\nEquity\n1.23%\nEquitas Small Finance Bank Ltd\nFinancial\nEquity\n1.23%\nAkzo Nobel India Ltd\nMaterials\nEquity\n1.22%\nJK Tyre & Industries Ltd\nConsumer Discretionary\nEquity\n1.09%\nSharda Cropchem Ltd\nMaterials\nEquity\n1.07%\nTransport Corporation Of India Ltd\nIndustrials\nEquity\n1.06%\nLG Balakrishnan & Brothers Ltd\nIndustrials\nEquity\n1.06%\nMahindra CIE Automotive Ltd\nConsumer Discretionary\nEquity\n1.06%\nRedington Ltd\nTechnology\nEquity\n1.05%\nVishal Mega Mart Ltd.\nConsumer Staples\nEquity\n1.05%\nZensar Technologies Ltd\nTechnology\nEquity\n1.02%\nVoltamp Transformers Ltd\nIndustrials\nEquity\n0.96%\nShoppers Stop Ltd\nConsumer Discretionary\nEquity\n0.94%\nVRL Logistics Ltd\nIndustrials\nEquity\n0.92%\nKirloskar Ferrous Industries Ltd\nMaterials\nEquity\n0.90%\nChambal Fertilisers & Chemicals Ltd\nMaterials\nEquity\n0.90%\nNRB Bearings Ltd\nIndustrials\nEquity\n0.86%\nUTI Asset Management Company Ltd\nFinancial\nEquity\n0.86%\nTega Industries Ltd\nIndustrials\nEquity\n0.83%\nIndigo Paints Ltd\nMaterials\nEquity\n0.83%\nLumax Industries Ltd\nConsumer Discretionary\nEquity\n0.77%\nThe Anup Engineering Ltd\nIndustrials\nEquity\n0.77%\nPNC Infratech Ltd\nIndustrials\nEquity\n0.77%\nSKF India (Industrial) Ltd\nIndustrials\nEquity\n0.73%\nRedtape Ltd\nConsumer Discretionary\nEquity\n0.71%\nMastek Ltd\nTechnology\nEquity\n0.71%\nTata Steel Ltd\nMaterials\nEquity\n0.70%\nDHFL VYSYA HOUSING FINANCE LIMITED EQ\nFinancial\nEquity\n0.67%\nBajaj Consumer Care Ltd\nConsumer Staples\nEquity\n0.67%\nUnichem Laboratories Ltd\nHealthcare\nEquity\n0.61%\nKEC International Ltd\nDiversified\nEquity\n0.56%\nBajaj Electricals Ltd\nConsumer Discretionary\nEquity\n0.50%\nIon Exchange (India) Ltd\nIndustrials\nEquity\n0.49%\nGateway Distriparks Ltd\nIndustrials\nEquity\n0.47%\nWakefit Innovations Ltd.\nConsumer Discretionary\nEquity\n0.46%\nAwfis Space Solutions Ltd.\nIndustrials\nEquity\n0.45%\nGMM Pfaudler Ltd\nIndustrials\nEquity\n0.44%\nGNA Axles Ltd\nConsumer Discretionary\nEquity\n0.42%\nVesuvius India Ltd\nIndustrials\nEquity\n0.42%\nLa Opala RG Ltd\nConsumer Discretionary\nEquity\n0.42%\nKei Industries Ltd\nIndustrials\nEquity\n0.42%\nInsecticides (India) Ltd\nMaterials\nEquity\n0.40%\nSKF India Ltd\nIndustrials\nEquity\n0.39%\nIFGL Refractories Ltd\nIndustrials\nEquity\n0.33%\nG R Infraprojects Ltd\nIndustrials\nEquity\n0.32%\nGujarat Pipavav Port Ltd\nIndustrials\nEquity\n0.32%\nEmami Ltd\nConsumer Staples\nEquity\n0.32%\nSula Vineyards Ltd\nConsumer Staples\nEquity\n0.25%\nBrainbees Solutions Ltd.\nConsumer Discretionary\nEquity\n0.25%\nGoodyear India Ltd\nConsumer Discretionary\nEquity\n0.25%\nDB Corp Ltd\nIndustrials\nEquity\n0.24%\nCarborundum Universal Ltd\nMaterials\nEquity\n0.17%\nBEML Ltd\nIndustrials\nEquity\n0.17%\nJupiter Life Line Hospitals Ltd.\nHealthcare\nEquity\n0.14%\nTCI Express Ltd\nIndustrials\nEquity\n0.06%\nNet Current Assets\nUnspecified\nNet Current Assets\n0.04%\n## Minimum investments\n## Understand terms\nAverage of the yearly returns of a mutual fund over a given period.\nThe total return of a mutual fund over a given period.\n## Returns and rankings\nName\n3Y\n5Y\n10Y\nAll\nFund returns\n+11.2%\n+15.8%\n+17.6%\n+18.4%\nCategory average ( Equity Small Cap )\n+19.7%\n+22.6%\n+16.1%\n--\nRank ( Equity Small Cap )\n34\n17\n5\n--\n## Understand terms\nA fee payable to a mutual fund house for managing your mutual fund investments. It is the total percentage of a company's fund assets used for administrative, management, advertising, and other expenses.\nA percentage of your capital gains payable to the government upon exiting your mutual fund investments. Taxation is categorized as long-term capital gains (LTCG) and short-term capital gains (STCG) depending on your holding period and the type of fund.\nA fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.\nA form of tax payable for the purchase or sale of an asset or security.\n## Exit Load\n## Exit load, stamp duty and tax\n## Exit load\n## Stamp duty on investment: 0.005% (from July 1st, 2020)\n## Tax implication\n## Compare similar funds\nName\n1Y\n3Y\nFund Size(Cr)\nITI Small Cap Fund Direct Growth\n+23.07%\n+25.51%\n3,454.00\nBandhan Small Cap Fund Direct Growth\n+13.76%\n+25.20%\n31,103.03\nInvesco India Small Cap Fund Direct Growth\n+18.62%\n+23.49%\n14,474.79\nSundaram Small Cap Fund Direct Growth\n+17.64%\n+17.43%\n3,922.31\nNippon India Small Cap Fund Direct Growth\n+10.95%\n+15.56%\n78,956.77\nCompare\n## Fund management\n## DM Dhruv Muchhal Jun 2023 - Present View details\n## CS Chirag Setalvad Jun 2014 - Present View details\n## About HDFC Small Cap Fund Direct Growth\n## Investment Objective\n## Fund house\n## Fund details\nexpense ratio: 0.75%\nexit load: exit load of 1% if redeemed within 1 year\nminimum sip amount: Rs 100\nriskometer: Very High\nbenchmark: BSE 250 SmallCap TRI"
+}
